@@ -39,12 +39,14 @@ app.UseAuthentication();
 
 app.Use(async (context, next) =>
 {
-    if (context.User.Identity.IsAuthenticated) //Checks identity
+    //Fix for not signing out user when starting application
+    if (context.User.Identity.IsAuthenticated && !context.Request.Path.StartsWithSegments("/Identity/Account/Login"))
     {
         await context.SignOutAsync(IdentityConstants.ApplicationScheme);
     }
     await next();
 });
+
 
 app.UseAuthorization();
 

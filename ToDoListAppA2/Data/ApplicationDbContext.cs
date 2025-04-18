@@ -10,5 +10,8 @@ namespace ToDoListAppA2.Data
             : base(options)
         {
         }
+
+        public DbSet<ToDoList> ToDoLists { get; set; }
+
     }
 }

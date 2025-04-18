@@ -8328,11 +8328,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\GGPC\\source\\repos\\ToDoListApp\\ToDoListAppA2\\ToDoListAppA2.csproj",
+      "projectUniqueName": "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2\\ToDoListAppA2.csproj",
       "projectName": "ToDoListAppA2",
-      "projectPath": "C:\\Users\\GGPC\\source\\repos\\ToDoListApp\\ToDoListAppA2\\ToDoListAppA2.csproj",
+      "projectPath": "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2\\ToDoListAppA2.csproj",
       "packagesPath": "C:\\Users\\GGPC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\GGPC\\source\\repos\\ToDoListApp\\ToDoListAppA2\\obj\\",
+      "outputPath": "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\GGPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
