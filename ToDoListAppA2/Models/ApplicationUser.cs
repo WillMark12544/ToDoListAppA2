@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace ToDoListAppA2.Models
 {
     public class ApplicationUser : IdentityUser
     {
-        public string TypeOfUser { get; set; } = "Normal";
+        public ICollection<ToDoList> ToDoLists { get; set; } // ToDoLists associated with given user
     }
 
 }

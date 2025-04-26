@@ -12,8 +12,8 @@ using ToDoListAppA2.Data;
 namespace ToDoListAppA2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250418012942_AddToDoList")]
-    partial class AddToDoList
+    [Migration("20250424070237_InitialDatabaseCreation")]
+    partial class InitialDatabaseCreation
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -210,10 +210,6 @@ namespace ToDoListAppA2.Migrations
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
-                    b.Property<string>("TypeOfUser")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -243,13 +239,6 @@ namespace ToDoListAppA2.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("DueDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -263,6 +252,62 @@ namespace ToDoListAppA2.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("ToDoLists");
+                });
+
+            modelBuilder.Entity("ToDoListAppA2.Models.ToDoListNode", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DueDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ToDoListId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ToDoListId");
+
+                    b.ToTable("ToDoListNodes");
+                });
+
+            modelBuilder.Entity("ToDoListAppA2.Models.ToDoListShare", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("SharedWithUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("ToDoListId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SharedWithUserId");
+
+                    b.HasIndex("ToDoListId");
+
+                    b.ToTable("ToDoListShares");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -319,12 +364,54 @@ namespace ToDoListAppA2.Migrations
             modelBuilder.Entity("ToDoListAppA2.Models.ToDoList", b =>
                 {
                     b.HasOne("ToDoListAppA2.Models.ApplicationUser", "User")
-                        .WithMany()
+                        .WithMany("ToDoLists")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ToDoListAppA2.Models.ToDoListNode", b =>
+                {
+                    b.HasOne("ToDoListAppA2.Models.ToDoList", "ToDoList")
+                        .WithMany("ToDoListNodes")
+                        .HasForeignKey("ToDoListId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ToDoList");
+                });
+
+            modelBuilder.Entity("ToDoListAppA2.Models.ToDoListShare", b =>
+                {
+                    b.HasOne("ToDoListAppA2.Models.ApplicationUser", "SharedWithUser")
+                        .WithMany()
+                        .HasForeignKey("SharedWithUserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("ToDoListAppA2.Models.ToDoList", "ToDoList")
+                        .WithMany("SharedWith")
+                        .HasForeignKey("ToDoListId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SharedWithUser");
+
+                    b.Navigation("ToDoList");
+                });
+
+            modelBuilder.Entity("ToDoListAppA2.Models.ApplicationUser", b =>
+                {
+                    b.Navigation("ToDoLists");
+                });
+
+            modelBuilder.Entity("ToDoListAppA2.Models.ToDoList", b =>
+                {
+                    b.Navigation("SharedWith");
+
+                    b.Navigation("ToDoListNodes");
                 });
 #pragma warning restore 612, 618
         }

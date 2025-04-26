@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ToDoListAppA2.Models
 {
@@ -12,12 +13,12 @@ namespace ToDoListAppA2.Models
 
         public string Description { get; set; }
 
-        public DateTime? DueDate { get; set; }
+        public ICollection<ToDoListNode> ToDoListNodes { get; set; }
+        public ICollection<ToDoListShare> SharedWith {  get; set; }
 
-        public string Status { get; set; } // "Completed", "In Progress", "To Do"
-
-        // Foreign key to User
-        public string UserId { get; set; }
+        // Assosiate ToDoList with user
+        [ForeignKey("UserId")]
         public ApplicationUser User { get; set; }
+        public string UserId { get; set; }
     }
 }

@@ -22,7 +22,10 @@ namespace ToDoListAppA2.Controllers
         // GET: ToDoLists
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.ToDoLists.Include(t => t.User);
+            var applicationDbContext = _context.ToDoLists
+                .Include(t => t.User)
+                .Include(t => t.SharedWith)
+                .ThenInclude(ts => ts.SharedWithUser);
             return View(await applicationDbContext.ToListAsync());
         }
 

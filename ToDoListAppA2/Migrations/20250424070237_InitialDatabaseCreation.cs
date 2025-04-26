@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ToDoListAppA2.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class InitialDatabaseCreation : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -30,7 +30,6 @@ namespace ToDoListAppA2.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    TypeOfUser = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -157,6 +156,76 @@ namespace ToDoListAppA2.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "ToDoLists",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ToDoLists", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ToDoLists_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ToDoListNodes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DueDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ToDoListId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ToDoListNodes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ToDoListNodes_ToDoLists_ToDoListId",
+                        column: x => x.ToDoListId,
+                        principalTable: "ToDoLists",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ToDoListShares",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ToDoListId = table.Column<int>(type: "int", nullable: false),
+                    SharedWithUserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ToDoListShares", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ToDoListShares_AspNetUsers_SharedWithUserId",
+                        column: x => x.SharedWithUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ToDoListShares_ToDoLists_ToDoListId",
+                        column: x => x.ToDoListId,
+                        principalTable: "ToDoLists",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -195,6 +264,26 @@ namespace ToDoListAppA2.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ToDoListNodes_ToDoListId",
+                table: "ToDoListNodes",
+                column: "ToDoListId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ToDoLists_UserId",
+                table: "ToDoLists",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ToDoListShares_SharedWithUserId",
+                table: "ToDoListShares",
+                column: "SharedWithUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ToDoListShares_ToDoListId",
+                table: "ToDoListShares",
+                column: "ToDoListId");
         }
 
         /// <inheritdoc />
@@ -216,7 +305,16 @@ namespace ToDoListAppA2.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "ToDoListNodes");
+
+            migrationBuilder.DropTable(
+                name: "ToDoListShares");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "ToDoLists");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
