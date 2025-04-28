@@ -188,6 +188,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/alexk/source/repos/WillMark12544/ToDoListAppA2/ToDoListAppA2/Views/MyToDoLists/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlUb0RvTGlzdHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alexk/source/repos/WillMark12544/ToDoListAppA2/ToDoListAppA2/Views/MyToDoLists/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlUb0RvTGlzdHNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alexk/source/repos/WillMark12544/ToDoListAppA2/ToDoListAppA2/Views/MyToDoLists/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlUb0RvTGlzdHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alexk/source/repos/WillMark12544/ToDoListAppA2/ToDoListAppA2/Views/MyToDoLists/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlUb0RvTGlzdHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alexk/source/repos/WillMark12544/ToDoListAppA2/ToDoListAppA2/Views/MyToDoLists/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlUb0RvTGlzdHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/alexk/source/repos/WillMark12544/ToDoListAppA2/ToDoListAppA2/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -198,26 +218,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/alexk/source/repos/WillMark12544/ToDoListAppA2/ToDoListAppA2/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/alexk/source/repos/WillMark12544/ToDoListAppA2/ToDoListAppA2/Views/ToDoLists/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG9Eb0xpc3RzXENyZWF0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/alexk/source/repos/WillMark12544/ToDoListAppA2/ToDoListAppA2/Views/ToDoLists/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG9Eb0xpc3RzXERlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/alexk/source/repos/WillMark12544/ToDoListAppA2/ToDoListAppA2/Views/ToDoLists/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG9Eb0xpc3RzXERldGFpbHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/alexk/source/repos/WillMark12544/ToDoListAppA2/ToDoListAppA2/Views/ToDoLists/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG9Eb0xpc3RzXEVkaXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/alexk/source/repos/WillMark12544/ToDoListAppA2/ToDoListAppA2/Views/ToDoLists/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG9Eb0xpc3RzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/alexk/source/repos/WillMark12544/ToDoListAppA2/ToDoListAppA2/Views/_ViewImports.cshtml]
