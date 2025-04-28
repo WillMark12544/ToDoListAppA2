@@ -11,13 +11,13 @@ using ToDoListAppA2.Models;
 
 namespace ToDoListAppA2.Controllers
 {
-    public class ToDoListsController : Controller
+    public class MyToDoListsController : Controller
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
 
         // Inject ApplicationDbContent and UserManager into controller
-        public ToDoListsController(UserManager<ApplicationUser> userManager, ApplicationDbContext context)
+        public MyToDoListsController(UserManager<ApplicationUser> userManager, ApplicationDbContext context)
         {
             _context = context;
             _userManager = userManager;
