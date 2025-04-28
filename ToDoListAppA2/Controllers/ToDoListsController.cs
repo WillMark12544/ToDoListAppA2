@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,10 +14,13 @@ namespace ToDoListAppA2.Controllers
     public class ToDoListsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public ToDoListsController(ApplicationDbContext context)
+        // Inject ApplicationDbContent and UserManager into controller
+        public ToDoListsController(UserManager<ApplicationUser> userManager, ApplicationDbContext context)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: ToDoLists
@@ -51,7 +55,6 @@ namespace ToDoListAppA2.Controllers
         // GET: ToDoLists/Create
         public IActionResult Create()
         {
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
             return View();
         }
 
@@ -60,15 +63,28 @@ namespace ToDoListAppA2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,DueDate,Status,UserId")] ToDoList toDoList)
+        public async Task<IActionResult> Create([Bind("Title,Description,UserId")] ToDoList toDoList)
         {
+            foreach (var value in ModelState.Values)
+            {
+                foreach (var error in value.Errors)
+                {
+                    Console.WriteLine(error.ErrorMessage);
+                }
+            }
+
+            Console.WriteLine(_userManager.GetUserId(User));
+
             if (ModelState.IsValid)
             {
+                toDoList.UserId = _userManager.GetUserId(User);
+
+
                 _context.Add(toDoList);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", toDoList.UserId);
+            //ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", toDoList.UserId);
             return View(toDoList);
         }
 

@@ -13,8 +13,9 @@ namespace ToDoListAppA2.Models
 
         public string Description { get; set; }
 
-        public ICollection<ToDoListNode> ToDoListNodes { get; set; }
-        public ICollection<ToDoListShare> SharedWith {  get; set; }
+        // Initialize collections, can be empty
+        public ICollection<ToDoListNode> ToDoListNodes { get; set; } = new List<ToDoListNode>();
+        public ICollection<ToDoListShare> SharedWith {  get; set; } = new List<ToDoListShare>();
 
         // Assosiate ToDoList with user
         [ForeignKey("UserId")]

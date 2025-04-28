@@ -17,9 +17,17 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => //Identity
 
 builder.Services.AddControllersWithViews(); //Views
 
-builder.Services.ConfigureApplicationCookie(options => 
+//builder.Services.ConfigureApplicationCookie(options => 
+//{
+//    options.LoginPath = "/Identity/Account/Login";
+//});
+
+builder.Services.ConfigureApplicationCookie(options =>
 {
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+    options.SlidingExpiration = false;
     options.LoginPath = "/Identity/Account/Login";
+    options.LogoutPath = "/Identity/Account/Logout";
 });
 
 var app = builder.Build(); //build
@@ -37,16 +45,15 @@ app.UseRouting();
 
 app.UseAuthentication();
 
-app.Use(async (context, next) =>
-{
-    //Fix for not signing out user when starting application
-    if (context.User.Identity.IsAuthenticated && !context.Request.Path.StartsWithSegments("/Identity/Account/Login"))
-    {
-        await context.SignOutAsync(IdentityConstants.ApplicationScheme);
-    }
-    await next();
-});
-
+//app.Use(async (context, next) =>
+//{
+//    //Fix for not signing out user when starting application
+//    if (context.User.Identity.IsAuthenticated && !context.Request.Path.StartsWithSegments("/Identity/Account/Login"))
+//    {
+//        await context.SignOutAsync(IdentityConstants.ApplicationScheme);
+//    }
+//    await next();
+//});
 
 app.UseAuthorization();
 

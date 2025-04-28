@@ -14,7 +14,7 @@
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ToDoListAppA2</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
@@ -22,9 +22,57 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+                        <!-- Make My lists, and Shared lists go to a users respective lists if logged in -->
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="ToDoListsController" asp-action="MyToDoLists">My lists</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="ToDoListsController" asp-action="SharedToDoLists">Shared lists</a>
+                            </li>
+                        }
+                        // Make My lists, and Shared lists go to login page if user is not logged in
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">My lists</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Shared lists</a>
+                            </li>
+                        }
+
+                    </ul>
+                    <ul class="navbar-nav ms-auto">
+                        <!-- Show Sign Out button if user is authenticated and not on login/logout pages -->
+                        @if (User.Identity.IsAuthenticated && 
+                        !Context.Request.Path.StartsWithSegments("/Identity/Account/Login") &&
+                        !Context.Request.Path.StartsWithSegments("/Identity/Account/Logout"))
+                        {
+                            // Show Hello message if user is logged in
+                            <li class="nav-item d-flex align-items-center">
+                                <span class="navbar-text me-3">
+                                    Hello, @User.Identity.Name
+                                </span>
+                            </li>
+                            <li class="nav-item">
+                                <form asp-area="Identity" asp-page="/Account/Logout" method="get" class="mb-0">
+                                    <button type="submit" class="btn btn-danger">Sign Out</button>
+                                </form>
+                            </li>
+                        }
+                        // Show Sign In button if user is not authenticated and not on login/logout pages
+                        else if (!User.Identity.IsAuthenticated && 
+                        !Context.Request.Path.StartsWithSegments("/Identity/Account/Login") &&
+                        !Context.Request.Path.StartsWithSegments("/Identity/Account/Logout"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">
+                                    <button type="button" class="btn btn-success">Sign In</button>
+                                </a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

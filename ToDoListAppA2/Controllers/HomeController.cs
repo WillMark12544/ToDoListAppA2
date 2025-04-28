@@ -1,32 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using ToDoListAppA2.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace ToDoListAppA2.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
-        public IActionResult Index()
-        {
-            if (!User.Identity.IsAuthenticated)
-            {
-                //Send users to login page
-                return RedirectToPage("/Account/Login", new { area = "Identity" });
-            }
-
-            //Shows notes page if logged in
-            return View();
-        }
-
-        public IActionResult Privacy()
+        public async Task<IActionResult> Index()
         {
             return View();
         }
