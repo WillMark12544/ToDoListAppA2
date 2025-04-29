@@ -26,10 +26,10 @@
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="MyToDoListsController" asp-action="MyToDoLists">My lists</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="MyToDoLists" asp-action="Index">My lists</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="SharedToDoListsController" asp-action="SharedToDoLists">Shared lists</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="SharedToDoLists" asp-action="Index">Shared lists</a>
                             </li>
                         }
                         // Make My lists, and Shared lists go to login page if user is not logged in

@@ -19,7 +19,8 @@ namespace ToDoListAppA2.Models
 
         // Assosiate ToDoList with user
         [ForeignKey("UserId")]
-        public ApplicationUser User { get; set; }
-        public string UserId { get; set; }
+        // Made both User and UserId nullable to avoid model binding errors
+        public ApplicationUser? User { get; set; } // Set based off the UserId set in the controller
+        public string? UserId { get; set; } // Set in Create() action method of MyToDoListController 
     }
 }

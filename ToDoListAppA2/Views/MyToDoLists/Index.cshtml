@@ -37,10 +37,18 @@
                     <details>
                         <summary>Show Emails</summary>
                         <ul style="margin-top: 0.5rem">
-                            @foreach (var user in item.SharedWith)
+                            @if (item.SharedWith != null && item.SharedWith.Any())
                             {
-                                <li>@user.SharedWithUser.Email</li>
+                                @foreach (var user in item.SharedWith)
+                                {
+                                    <li>@user.SharedWithUser.Email</li>
+                                }
                             }
+                            else
+                            {
+                                <p>Shared with none</p>
+                            }
+
                         </ul>
                     </details>
                 </td>

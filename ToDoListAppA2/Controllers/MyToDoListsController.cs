@@ -63,7 +63,7 @@ namespace ToDoListAppA2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Title,Description,UserId")] ToDoList toDoList)
+        public async Task<IActionResult> Create([Bind("Title,Description")] ToDoList toDoList)
         {
             foreach (var value in ModelState.Values)
             {
