@@ -34,7 +34,7 @@ namespace ToDoListAppA2.Controllers
         }
 
         // GET: ToDoLists/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Open(int? id)
         {
             if (id == null)
             {
@@ -43,6 +43,9 @@ namespace ToDoListAppA2.Controllers
 
             var toDoList = await _context.ToDoLists
                 .Include(t => t.User)
+                .Include(t => t.ToDoListNodes)
+                .Include(t => t.SharedWith)
+                .ThenInclude(s => s.SharedWithUser)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (toDoList == null)
             {
