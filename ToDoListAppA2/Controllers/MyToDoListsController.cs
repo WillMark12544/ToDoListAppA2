@@ -65,26 +65,13 @@ namespace ToDoListAppA2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Title,Description")] ToDoList toDoList)
         {
-            foreach (var value in ModelState.Values)
-            {
-                foreach (var error in value.Errors)
-                {
-                    Console.WriteLine(error.ErrorMessage);
-                }
-            }
-
-            Console.WriteLine(_userManager.GetUserId(User));
-
             if (ModelState.IsValid)
             {
                 toDoList.UserId = _userManager.GetUserId(User);
-
-
                 _context.Add(toDoList);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            //ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", toDoList.UserId);
             return View(toDoList);
         }
 
@@ -101,7 +88,6 @@ namespace ToDoListAppA2.Controllers
             {
                 return NotFound();
             }
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", toDoList.UserId);
             return View(toDoList);
         }
 
@@ -110,35 +96,41 @@ namespace ToDoListAppA2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,DueDate,Status,UserId")] ToDoList toDoList)
+        public async Task<IActionResult> Edit(int id, [Bind("Title,Description")] ToDoList toDoList)
         {
-            if (id != toDoList.Id)
+            if (!ModelState.IsValid)
+            {
+                return View(toDoList);
+            }
+
+            var existingToDoList = await _context.ToDoLists.FindAsync(id);
+            if (existingToDoList == null)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            existingToDoList.UserId = _userManager.GetUserId(User);
+            existingToDoList.Title = toDoList.Title;
+            existingToDoList.Description = toDoList.Description;
+
+            try
             {
-                try
-                {
-                    _context.Update(toDoList);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ToDoListExists(toDoList.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                _context.Update(existingToDoList);
+                await _context.SaveChangesAsync();
             }
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", toDoList.UserId);
-            return View(toDoList);
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ToDoListExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: ToDoLists/Delete/5
