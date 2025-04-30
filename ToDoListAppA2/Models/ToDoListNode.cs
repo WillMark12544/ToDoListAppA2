@@ -13,7 +13,7 @@ namespace ToDoListAppA2.Models
 
         // Foregin key to ToDoList
         [ForeignKey("ToDoListId")]
-        public ToDoList ToDoList { get; set; }
+        public ToDoList? ToDoList { get; set; }
         public int ToDoListId { get; set; } 
 
 

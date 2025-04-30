@@ -41,7 +41,7 @@ namespace ToDoListAppA2.Controllers
             return View(toDoList);
         }
 
-        // GET: ToDoLists/Create
+        // GET: ToDoListNodes/Create
         public IActionResult Create(int toDoListId)
         {
             var model = new ToDoListNode
@@ -50,6 +50,20 @@ namespace ToDoListAppA2.Controllers
             };
 
             return View(model);
+        }
+
+        // POST: ToDoListNodes/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Title,Description,Status,DueDate,ToDoListId")] ToDoListNode toDoListNode)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.ToDoListNodes.Add(toDoListNode);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index", new { id = toDoListNode.ToDoListId});
+            }
+            return View(toDoListNode);
         }
     }
 }
