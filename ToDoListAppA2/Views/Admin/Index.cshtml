@@ -28,16 +28,21 @@
                 <td>@user.Email</td>
                 <td>@string.Join(", ", roles)</td>
                 <td>
-                    <form asp-action="ChangeRole" method="post">
+                    <form asp-action="ChangeRole" method="post" class="d-inline">
                         <input type="hidden" name="userId" value="@user.Id" />
-                        <select name="role">
+                        <select name="role" class="form-select form-select-sm d-inline w-auto">
                             <option value="Normal" selected="@(currentRole == "Normal")">Normal</option>
                             <option value="Premium" selected="@(currentRole == "Premium")">Premium</option>
                             <option value="Admin" selected="@(currentRole == "Admin")">Admin</option>
                             <option value="Disabled" selected="@(currentRole == "Disabled")">Disabled</option>
                         </select>
-                        <button type="submit" class="btn btn-sm btn-primary">Update</button>
+                        <button type="submit" class="btn btn-sm btn-primary">Update</button> 
                     </form>
+                    <form asp-action="DeleteUser" method="post" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this user?');">
+                        <input type="hidden" name="userId" value="@user.Id" />
+                        <button type="submit" class="btn btn-sm btn-danger ms-2">Delete</button>
+                    </form>
+
                 </td>
             </tr>
         }

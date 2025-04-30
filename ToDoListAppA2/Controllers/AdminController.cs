@@ -73,5 +73,45 @@ namespace ToDoListAppA2.Controllers
             // On success, redirect to the index page
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteUser(string userId)
+        {
+            if (string.IsNullOrEmpty(userId)) // Checks user exists
+            {
+                TempData["ErrorMessage"] = "Invalid user ID."; 
+                return RedirectToAction("Index");
+            }
+
+            //Search for user by ID
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                TempData["ErrorMessage"] = "User not found."; 
+                return RedirectToAction("Index");
+            }
+
+            //Stop an Admin for deleting themself
+            if (user.Email == User.Identity.Name)
+            {
+                TempData["ErrorMessage"] = "You cannot delete your own account."; 
+                return RedirectToAction("Index");
+            }
+
+            //Actualy deletes the user
+            var result = await _userManager.DeleteAsync(user);
+
+            if (result.Succeeded)
+            {
+                TempData["SuccessMessage"] = "User deleted successfully."; 
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "Error deleting user."; 
+            }
+
+            return RedirectToAction("Index"); 
+        }
+
     }
 }
