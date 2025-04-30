@@ -1,28 +1,51 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using ToDoListAppA2.Models
-@model IEnumerable<ToDoListAppA2.Models.ApplicationUser>
-
-@inject UserManager<ApplicationUser> UserManager
+@model List<(ToDoListAppA2.Models.ApplicationUser User, IList<string> Roles)>
 
 @{
     ViewData["Title"] = "Admin Panel";
+    var searchTerm = ViewData["SearchTerm"] as string;
+    var roleFilter = ViewData["RoleFilter"] as string;
 }
 
 <h2>Admin Panel</h2>
 
+<!-- Search + Filter Form -->
+<form method="get" asp-action="Index" class="mb-3">
+    <div class="row g-2">
+        <div class="col-md-6">
+            <input type="text" class="form-control" name="searchTerm" placeholder="Search by email" value="@searchTerm" />
+        </div>
+        <div class="col-md-4">
+            <select name="roleFilter" class="form-select">
+                <option value="">All Roles</option>
+                <option value="Normal" selected="@(roleFilter == "Normal")">Normal</option>
+                <option value="Premium" selected="@(roleFilter == "Premium")">Premium</option>
+                <option value="Admin" selected="@(roleFilter == "Admin")">Admin</option>
+                <option value="Disabled" selected="@(roleFilter == "Disabled")">Disabled</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-outline-secondary w-100">Search</button>
+        </div>
+    </div>
+</form>
+
+<!-- Users Table -->
 <table class="table">
     <thead>
         <tr>
             <th>Email</th>
             <th>Roles</th>
-            <th>Change Role</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var user in Model)
+        @foreach (var entry in Model)
         {
-            var roles = await UserManager.GetRolesAsync(user);
-            var currentRole = roles.FirstOrDefault(); 
+            var user = entry.User;
+            var roles = entry.Roles;
+            var currentRole = roles.FirstOrDefault();
 
             <tr>
                 <td>@user.Email</td>
@@ -36,13 +59,12 @@
                             <option value="Admin" selected="@(currentRole == "Admin")">Admin</option>
                             <option value="Disabled" selected="@(currentRole == "Disabled")">Disabled</option>
                         </select>
-                        <button type="submit" class="btn btn-sm btn-primary">Update</button> 
+                        <button type="submit" class="btn btn-sm btn-primary">Update</button>
                     </form>
-                    <form asp-action="DeleteUser" method="post" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this user?');">
+                    <form asp-action="DeleteUser" method="post" class="d-inline" onsubmit="return confirm('Delete this user?');">
                         <input type="hidden" name="userId" value="@user.Id" />
                         <button type="submit" class="btn btn-sm btn-danger ms-2">Delete</button>
                     </form>
-
                 </td>
             </tr>
         }

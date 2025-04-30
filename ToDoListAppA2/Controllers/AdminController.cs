@@ -17,11 +17,41 @@ namespace ToDoListAppA2.Controllers
             _roleManager = roleManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index(string searchTerm, string roleFilter)
         {
-            var users = _userManager.Users.ToList();
-            return View(users);
+            var users = _userManager.Users.ToList(); //Loads users from DB
+            var userViewModels = new List<(ApplicationUser User, IList<string> Roles)>();
+
+            foreach (var user in users)
+            {
+                var roles = await _userManager.GetRolesAsync(user);
+                userViewModels.Add((user, roles));
+            }
+
+            //Email Saerhc
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                userViewModels = userViewModels
+                    .Where(u => u.User.Email != null && u.User.Email.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+            }
+
+            //Roles Search
+            if (!string.IsNullOrEmpty(roleFilter))
+            {
+                userViewModels = userViewModels
+                    .Where(u => u.Roles.Contains(roleFilter, StringComparer.OrdinalIgnoreCase))
+                    .ToList();
+            }
+
+            ViewData["SearchTerm"] = searchTerm;
+            ViewData["RoleFilter"] = roleFilter;
+
+            return View(userViewModels);
         }
+
+
+
 
         [HttpPost]
         public async Task<IActionResult> ChangeRole(string userId, string role)
@@ -75,7 +105,7 @@ namespace ToDoListAppA2.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> DeleteUser(string userId)
+        public async Task<IActionResult> DeleteUser(string userId) //Deletes UserIDS, Need to Add ToDoLists, Nodes and Shares later !!!!!!
         {
             if (string.IsNullOrEmpty(userId)) // Checks user exists
             {
@@ -112,6 +142,8 @@ namespace ToDoListAppA2.Controllers
 
             return RedirectToAction("Index"); 
         }
+
+
 
     }
 }
