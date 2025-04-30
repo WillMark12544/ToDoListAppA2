@@ -1,0 +1,45 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using ToDoListAppA2.Models
+@model IEnumerable<ToDoListAppA2.Models.ApplicationUser>
+
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "Admin Panel";
+}
+
+<h2>Admin Panel</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Roles</th>
+            <th>Change Role</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            var roles = await UserManager.GetRolesAsync(user);
+            var currentRole = roles.FirstOrDefault(); 
+
+            <tr>
+                <td>@user.Email</td>
+                <td>@string.Join(", ", roles)</td>
+                <td>
+                    <form asp-action="ChangeRole" method="post">
+                        <input type="hidden" name="userId" value="@user.Id" />
+                        <select name="role">
+                            <option value="Normal" selected="@(currentRole == "Normal")">Normal</option>
+                            <option value="Premium" selected="@(currentRole == "Premium")">Premium</option>
+                            <option value="Admin" selected="@(currentRole == "Admin")">Admin</option>
+                            <option value="Disabled" selected="@(currentRole == "Disabled")">Disabled</option>
+                        </select>
+                        <button type="submit" class="btn btn-sm btn-primary">Update</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

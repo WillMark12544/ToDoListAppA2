@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using ToDoListAppA2.Data;
 using ToDoListAppA2.Models;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
  
@@ -78,4 +79,43 @@ using (var scope = app.Services.CreateScope()) //Ensures Roles Exist
     }
 }
 
+using (var scope = app.Services.CreateScope()) //Creates Test Admin - Needs to Change at some point
+{
+    var services = scope.ServiceProvider;
+    var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+
+    string adminEmail = "test1.test@gmail.com"; // Replace with the actual user's email
+    string roleName = "Admin";
+
+    // Create the role if it doesn't exist
+    if (!await roleManager.RoleExistsAsync(roleName))
+    {
+        await roleManager.CreateAsync(new IdentityRole(roleName));
+    }
+
+    // Find the user
+    var user = await userManager.FindByEmailAsync(adminEmail);
+    if (user != null)
+    {
+        // Ensure the user is in the Admin role
+        if (!(await userManager.IsInRoleAsync(user, roleName)))
+        {
+            await userManager.AddToRoleAsync(user, roleName);
+            Console.WriteLine($"User {adminEmail} added to Admin role.");
+        }
+        else
+        {
+            Console.WriteLine($"User {adminEmail} is already in the Admin role.");
+        }
+    }
+    else
+    {
+        Console.WriteLine($"User {adminEmail} not found.");
+    }
+}
+
+
 app.Run();
+
+

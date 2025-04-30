@@ -31,6 +31,13 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="SharedToDoLists" asp-action="Index">Shared lists</a>
                             </li>
+
+                            @if (User.IsInRole("Admin")) // Checks if user is an Admin
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Admin" asp-action="Index">Admin Panel</a>
+                                </li>
+                            }
                         }
                         // Make My lists, and Shared lists go to login page if user is not logged in
                         else
