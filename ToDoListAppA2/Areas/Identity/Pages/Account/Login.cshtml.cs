@@ -109,6 +109,21 @@ namespace ToDoListAppA2.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
+                var user = await _signInManager.UserManager.FindByEmailAsync(Input.Email);
+
+                if (user != null)
+                {
+                    var roles = await _signInManager.UserManager.GetRolesAsync(user);
+
+                    //Stops "Disabled" accounts
+                    if (roles.Contains("Disabled"))
+                    {
+                        ModelState.AddModelError(string.Empty, "Your account has been disabled. Please contact support.");
+                        return Page();
+                    }
+                }
+
+                //Normal Login
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
@@ -131,8 +146,9 @@ namespace ToDoListAppA2.Areas.Identity.Pages.Account
                 }
             }
 
-            //Something bad happend lol
+            //Something bad happened lol
             return Page();
         }
+
     }
 }
