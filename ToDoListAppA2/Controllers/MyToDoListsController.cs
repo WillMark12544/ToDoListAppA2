@@ -40,8 +40,6 @@ namespace ToDoListAppA2.Controllers
         }
 
         // POST: ToDoLists/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Title,Description")] ToDoList toDoList)
@@ -56,7 +54,7 @@ namespace ToDoListAppA2.Controllers
             return View(toDoList);
         }
 
-        // GET: ToDoLists/Edit/5
+        // GET: ToDoLists/Edit
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,9 +70,7 @@ namespace ToDoListAppA2.Controllers
             return View(toDoList);
         }
 
-        // POST: ToDoLists/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: ToDoLists/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Title,Description")] ToDoList toDoList)
@@ -114,7 +110,7 @@ namespace ToDoListAppA2.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // GET: ToDoLists/Delete/5
+        // GET: ToDoLists/Delete
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -133,7 +129,7 @@ namespace ToDoListAppA2.Controllers
             return View(toDoList);
         }
 
-        // POST: ToDoLists/Delete/5
+        // POST: ToDoLists/Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

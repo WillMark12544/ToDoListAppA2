@@ -20,7 +20,7 @@ namespace ToDoListAppA2.Controllers
             _userManager = userManager;
         }
 
-        // GET: ToDoLists/Details/5
+        // GET: ToDoListNodes/Index
         public async Task<IActionResult> Index(int? id)
         {
             if (id == null)
@@ -78,9 +78,7 @@ namespace ToDoListAppA2.Controllers
             return View(existingNode);
         }
 
-        // POST: ToDoLists/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: ToDoListNodes/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Title,Description,Status,DueDate,ToDoListId")] ToDoListNode toDoListNode)
@@ -118,6 +116,39 @@ namespace ToDoListAppA2.Controllers
                 }
             }
 
+            return RedirectToAction("Index", new { id = toDoListNode.ToDoListId });
+        }
+
+        // GET: ToDoListNode/Delete
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var toDoListNode = await _context.ToDoListNodes
+                .FirstOrDefaultAsync(tn => tn.Id == id);
+            if (toDoListNode == null)
+            {
+                return NotFound();
+            }
+
+            return View(toDoListNode);
+        }
+
+        // POST: ToDoListNode/Delete
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var toDoListNode = await _context.ToDoListNodes.FindAsync(id);
+            if (toDoListNode != null)
+            {
+                _context.ToDoListNodes.Remove(toDoListNode);
+            }
+
+            await _context.SaveChangesAsync();
             return RedirectToAction("Index", new { id = toDoListNode.ToDoListId });
         }
 
