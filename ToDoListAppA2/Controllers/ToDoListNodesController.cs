@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 using ToDoListAppA2.Data;
 using ToDoListAppA2.Models;
 
@@ -64,6 +65,65 @@ namespace ToDoListAppA2.Controllers
                 return RedirectToAction("Index", new { id = toDoListNode.ToDoListId});
             }
             return View(toDoListNode);
+        }
+
+        // GET: ToDoListNodes/Edit
+        public async Task<IActionResult> Edit(int id)
+        {
+            var existingNode = await _context.ToDoListNodes.FindAsync(id);
+            if (existingNode == null)
+            {
+                return NotFound();
+            }
+            return View(existingNode);
+        }
+
+        // POST: ToDoLists/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Title,Description,Status,DueDate,ToDoListId")] ToDoListNode toDoListNode)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(toDoListNode);
+            }
+
+            var existingToDoListNode = await _context.ToDoListNodes.FindAsync(id);
+            if (existingToDoListNode == null)
+            {
+                return NotFound();
+            }
+
+            existingToDoListNode.Title = toDoListNode.Title;
+            existingToDoListNode.Description = toDoListNode.Description;
+            existingToDoListNode.Status = toDoListNode.Status;
+            existingToDoListNode.DueDate = toDoListNode.DueDate;
+
+            try
+            {
+                _context.Update(existingToDoListNode);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ToDoListNodeExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return RedirectToAction("Index", new { id = toDoListNode.ToDoListId });
+        }
+
+        private bool ToDoListNodeExists(int id)
+        {
+            return _context.ToDoListNodes.Any(tn => tn.Id == id);
         }
     }
 }
