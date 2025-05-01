@@ -27,11 +27,16 @@ namespace ToDoListAppA2.Controllers
         // GET: ToDoLists
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.ToDoLists
+            var userId = _userManager.GetUserId(User);
+
+            var myToDoLists = await _context.ToDoLists
+                .Where(t => t.UserId == userId)
                 .Include(t => t.User)
                 .Include(t => t.SharedWith)
-                .ThenInclude(ts => ts.SharedWithUser);
-            return View(await applicationDbContext.ToListAsync());
+                .ThenInclude(ts => ts.SharedWithUser)
+                .ToListAsync();
+
+            return View(myToDoLists);
         }
 
         // GET: ToDoLists/Create
@@ -169,7 +174,10 @@ namespace ToDoListAppA2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Share(int id, string email)
         {
+            // For displaying Title label in Share view
             var toDoList = await _context.ToDoLists.FirstOrDefaultAsync(t => t.Id == id);
+            
+            // Ensure To-Do List exists
             if (toDoList == null)
             {
                 return NotFound();
@@ -178,7 +186,7 @@ namespace ToDoListAppA2.Controllers
             // Check if email is null
             if (string.IsNullOrEmpty(email))
             {
-                // Error messages for user feedback, sent to <span> in view
+                // Error messages for user feedback, sent to <span> in Share view
                 ModelState.AddModelError("Email", "The Email field is required.");
                 return View(toDoList);
             }
@@ -217,7 +225,7 @@ namespace ToDoListAppA2.Controllers
 
         private bool ToDoListExists(int id)
         {
-            return _context.ToDoLists.Any(e => e.Id == id);
+            return _context.ToDoLists.Any(t => t.Id == id);
         }
     }
 }

@@ -8,13 +8,9 @@
 
   <ItemGroup>
     <Compile Remove="Areas\Admin\**" />
-    <Compile Remove="Views\SharedToDoLists\**" />
     <Content Remove="Areas\Admin\**" />
-    <Content Remove="Views\SharedToDoLists\**" />
     <EmbeddedResource Remove="Areas\Admin\**" />
-    <EmbeddedResource Remove="Views\SharedToDoLists\**" />
     <None Remove="Areas\Admin\**" />
-    <None Remove="Views\SharedToDoLists\**" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ToDoListAppA2.Models.ToDoList>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Shared ToDo Lists</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                Shared With
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    <details>
+                        <summary>Show Emails</summary>
+                        <ul style="margin-top: 0.5rem">
+                            @if (item.SharedWith != null && item.SharedWith.Any())
+                            {
+                                @foreach (var user in item.SharedWith)
+                                {
+                                    <li>@user.SharedWithUser.Email</li>
+                                }
+                            }
+                            else
+                            {
+                                <p>Shared with none</p>
+                            }
+                        </ul>
+                    </details>
+                </td>
+                <td>
+                    <a asp-controller="ToDoListNodes" asp-action="Index" asp-route-id="@item.Id" class="btn btn-outline-secondary btn-sm">Open</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-secondary btn-sm">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

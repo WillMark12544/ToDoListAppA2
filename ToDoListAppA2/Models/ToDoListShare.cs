@@ -8,13 +8,13 @@ namespace ToDoListAppA2.Models
 
         // Foriegn key to ToDoList
         [ForeignKey("ToDoListId")]
-        public ToDoList ToDoList { get; set; }
+        public ToDoList? ToDoList { get; set; }
         public int ToDoListId { get; set; }
 
 
         // Foriegn key to ApplicationUser
         [ForeignKey("SharedWithUserId")]
-        public ApplicationUser SharedWithUser { get; set; }
+        public ApplicationUser? SharedWithUser { get; set; }
         public string SharedWithUserId { get; set; }
 
         
