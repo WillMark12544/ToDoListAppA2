@@ -220,8 +220,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlUb0RvTGlzdHNcU2hhcmUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/alexk/source/repos/WillMark12544/ToDoListAppA2/ToDoListAppA2/Views/MyToDoLists/Unshare.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlUb0RvTGlzdHNcVW5zaGFyZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/alexk/source/repos/WillMark12544/ToDoListAppA2/ToDoListAppA2/Views/SharedToDoLists/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkVG9Eb0xpc3RzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alexk/source/repos/WillMark12544/ToDoListAppA2/ToDoListAppA2/Views/SharedToDoLists/Leave.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkVG9Eb0xpc3RzXExlYXZlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/alexk/source/repos/WillMark12544/ToDoListAppA2/ToDoListAppA2/Views/Shared/Error.cshtml]

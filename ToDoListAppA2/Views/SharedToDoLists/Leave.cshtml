@@ -1,0 +1,33 @@
+﻿@model ToDoListAppA2.Models.ToDoList
+
+@{
+    ViewData["Title"] = "Leave";
+}
+
+<h1>Leave To-Do List</h1>
+
+<h3>Are you sure you want to leave this To-Do List?</h3>
+<h4>The To-Do List will have to be re-shared with you</h4>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+    </dl>
+
+    <form asp-action="Leave" method="post">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Leave" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </form>
+</div>

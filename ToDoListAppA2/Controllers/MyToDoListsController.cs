@@ -207,6 +207,16 @@ namespace ToDoListAppA2.Controllers
                 return NotFound();
             }
 
+            var currentUserEmail = User.Identity.Name;
+
+            // Ensure user can't share a To-Do List with themselves
+            // Compare with case insensitive match
+            if (string.Equals(email, currentUserEmail, StringComparison.OrdinalIgnoreCase))
+            {
+                ModelState.AddModelError("Email", "You can't share a To-Do List with yourself!");
+                return View(toDoList);
+            }
+
             // Check if email is null
             if (string.IsNullOrEmpty(email))
             {
