@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Shared ToDo Lists</h1>
+<h1>Shared To-Do Lists</h1>
 <table class="table">
     <thead>
         <tr>
@@ -49,8 +49,11 @@
                     </details>
                 </td>
                 <td>
-                    <a asp-controller="ToDoListNodes" asp-action="Index" asp-route-id="@item.Id" class="btn btn-outline-secondary btn-sm">Open</a>
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-secondary btn-sm">Edit</a>
+                    <!-- Pass the source in so the ToDoListNode controller can tell WHERE the user is coming from
+                         This is important so the back buttons take you back to where you origionally navigated from
+                    -->
+                    <a asp-controller="ToDoListNodes" asp-action="Index" asp-route-id="@item.Id" asp-route-source="SharedToDoLists" class="btn btn-outline-secondary btn-sm">Open</a>
+                    <a asp-controller="MyToDoLists" asp-action="Edit" asp-route-id="@item.Id" asp-route-source="SharedToDoLists" class="btn btn-outline-secondary btn-sm">Edit</a>
                 </td>
             </tr>
         }

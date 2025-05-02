@@ -38,7 +38,8 @@
 
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
+        <input type="hidden" name="source" value="@ViewBag.Source" />
         <input type="submit" value="Delete" class="btn btn-danger" />
-        <a asp-action="Index" asp-route-id="@Model.ToDoListId" class="btn btn-secondary">Back to List</a>
+        <a asp-action="Index" asp-route-id="@Model.ToDoListId" asp-route-source="@(ViewBag.Source ?? "MyToDoLists")" class="btn btn-secondary">Back to List</a>
     </form>
 </div>

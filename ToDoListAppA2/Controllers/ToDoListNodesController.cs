@@ -21,7 +21,7 @@ namespace ToDoListAppA2.Controllers
         }
 
         // GET: ToDoListNodes/Index
-        public async Task<IActionResult> Index(int? id)
+        public async Task<IActionResult> Index(int? id, string source)
         {
             if (id == null)
             {
@@ -39,49 +39,57 @@ namespace ToDoListAppA2.Controllers
                 return NotFound();
             }
 
+            // Use ViewBag to pass the navigation source around the controller
+            ViewBag.Source = source;
+
             return View(toDoList);
         }
 
         // GET: ToDoListNodes/Create
-        public IActionResult Create(int toDoListId)
+        public IActionResult Create(int toDoListId, string source)
         {
             var model = new ToDoListNode
             {
                 ToDoListId = toDoListId
             };
 
+            ViewBag.Source = source;
             return View(model);
         }
 
         // POST: ToDoListNodes/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Title,Description,Status,DueDate,ToDoListId")] ToDoListNode toDoListNode)
+        public async Task<IActionResult> Create([Bind("Title,Description,Status,DueDate,ToDoListId")] ToDoListNode toDoListNode, string source)
         {
             if (ModelState.IsValid)
             {
                 _context.ToDoListNodes.Add(toDoListNode);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index", new { id = toDoListNode.ToDoListId});
+                return RedirectToAction(nameof(Index), new { id = toDoListNode.ToDoListId, source = source});
             }
+
+            ViewBag.Source = source;
             return View(toDoListNode);
         }
 
         // GET: ToDoListNodes/Edit
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> Edit(int id, string source)
         {
             var existingNode = await _context.ToDoListNodes.FindAsync(id);
             if (existingNode == null)
             {
                 return NotFound();
             }
+
+            ViewBag.Source = source;
             return View(existingNode);
         }
 
         // POST: ToDoListNodes/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Title,Description,Status,DueDate,ToDoListId")] ToDoListNode toDoListNode)
+        public async Task<IActionResult> Edit(int id, [Bind("Title,Description,Status,DueDate,ToDoListId")] ToDoListNode toDoListNode, string source)
         {
             if (!ModelState.IsValid)
             {
@@ -116,11 +124,12 @@ namespace ToDoListAppA2.Controllers
                 }
             }
 
-            return RedirectToAction("Index", new { id = toDoListNode.ToDoListId });
+            ViewBag.Source = source;
+            return RedirectToAction(nameof(Index), new { id = toDoListNode.ToDoListId, source = source});
         }
 
         // GET: ToDoListNode/Delete
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id, string source)
         {
             if (id == null)
             {
@@ -134,13 +143,14 @@ namespace ToDoListAppA2.Controllers
                 return NotFound();
             }
 
+            ViewBag.Source = source;
             return View(toDoListNode);
         }
 
         // POST: ToDoListNode/Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id, string source)
         {
             var toDoListNode = await _context.ToDoListNodes.FindAsync(id);
             if (toDoListNode != null)
@@ -149,7 +159,8 @@ namespace ToDoListAppA2.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index", new { id = toDoListNode.ToDoListId });
+            ViewBag.Source = source;
+            return RedirectToAction(nameof(Index), new { id = toDoListNode.ToDoListId, source = source});
         }
 
         private bool ToDoListNodeExists(int id)

@@ -13,6 +13,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             
             <input type="hidden" asp-for="ToDoListId" />
+            <input type="hidden" name="source" value="@ViewBag.Source"/>
 
             <div class="mb-3">
                 <label asp-for="Title" class="form-label"></label>
@@ -40,7 +41,7 @@
             </div>
             <div class="mb-3">
                 <input type="submit" value="Create" class="btn btn-primary" />
-                <a asp-action="Index" asp-route-id="@Model.ToDoListId" class="btn btn-secondary">Back to List</a>
+                <a asp-action="Index" asp-route-id="@Model.ToDoListId" asp-route-source="@(ViewBag.Source ?? "MyToDoLists")" class="btn btn-secondary">Back to List</a>
             </div>
         </form>
     </div>

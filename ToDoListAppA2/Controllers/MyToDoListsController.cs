@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Elfie.Serialization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -61,7 +62,7 @@ namespace ToDoListAppA2.Controllers
         }
 
         // GET: ToDoLists/Edit
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id, string source)
         {
             if (id == null)
             {
@@ -73,13 +74,15 @@ namespace ToDoListAppA2.Controllers
             {
                 return NotFound();
             }
+            ViewBag.Source = source;
+
             return View(toDoList);
         }
 
         // POST: ToDoLists/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Title,Description")] ToDoList toDoList)
+        public async Task<IActionResult> Edit(int id, [Bind("Title,Description")] ToDoList toDoList, string source)
         {
             if (!ModelState.IsValid)
             {
@@ -92,9 +95,29 @@ namespace ToDoListAppA2.Controllers
                 return NotFound();
             }
 
-            existingToDoList.UserId = _userManager.GetUserId(User);
-            existingToDoList.Title = toDoList.Title;
-            existingToDoList.Description = toDoList.Description;
+            var currentUserId = _userManager.GetUserId(User);
+
+            // If the user is the owner of the ToDoList, allow edits
+            if (existingToDoList.UserId == currentUserId)
+            {
+                existingToDoList.Title = toDoList.Title;
+                existingToDoList.Description = toDoList.Description;
+            } else
+            {
+                // if the user is a shared user, allow edits
+                bool isSharedWithUser = await _context.ToDoListShares
+                    .AnyAsync(ts => ts.ToDoListId == id && ts.SharedWithUserId == currentUserId);
+                if (isSharedWithUser)
+                {
+                    existingToDoList.Title = toDoList.Title;
+                    existingToDoList.Description = toDoList.Description;
+                }
+                // Do not allow edits from any other type of user
+                else
+                {
+                    return Forbid();
+                }
+            }
 
             try
             {
@@ -113,7 +136,8 @@ namespace ToDoListAppA2.Controllers
                 }
             }
 
-            return RedirectToAction(nameof(Index));
+            ViewBag.Source = source;
+            return RedirectToAction("Index", source ?? "MyToDoLists");
         }
 
         // GET: ToDoLists/Delete
