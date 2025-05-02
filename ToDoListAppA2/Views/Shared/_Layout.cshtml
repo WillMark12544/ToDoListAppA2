@@ -75,9 +75,7 @@
                         !Context.Request.Path.StartsWithSegments("/Identity/Account/Logout"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">
-                                    <button type="button" class="btn btn-success">Sign In</button>
-                                </a>
+                                <a class="btn btn-success" asp-area="Identity" asp-page="/Account/Login">Sign in</a>
                             </li>
                         }
                     </ul>
