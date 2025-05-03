@@ -91,43 +91,61 @@ namespace ToDoListAppA2.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> DeleteUser(string userId) //Deletes UserIDS, Need to Add ToDoLists, Nodes and Shares later !!!!!!
+        public async Task<IActionResult> DeleteUser(string userId)
         {
-            if (string.IsNullOrEmpty(userId)) // Checks user exists
+            if (string.IsNullOrEmpty(userId))
             {
-                TempData["ErrorMessage"] = "Invalid user ID."; 
+                TempData["ErrorMessage"] = "Invalid user ID.";
                 return RedirectToAction("Index");
             }
 
-            //Search for user by ID
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
             {
-                TempData["ErrorMessage"] = "User not found."; 
+                TempData["ErrorMessage"] = "User not found.";
                 return RedirectToAction("Index");
             }
 
-            //Stop an Admin for deleting themself
             if (user.Email == User.Identity.Name)
             {
-                TempData["ErrorMessage"] = "You cannot delete your own account."; 
+                TempData["ErrorMessage"] = "You cannot delete your own account.";
                 return RedirectToAction("Index");
             }
 
-            //Actualy deletes the user
+            var userLists = _context.ToDoLists // Gathers ToDoLists
+                .Where(t => t.UserId == userId)
+                .ToList();
+
+            foreach (var list in userLists) //Deletes nodes and Shares
+            {
+                _context.ToDoLists.Remove(list);
+            }
+
+            // Deletes assosiation to list shared with them
+            var sharedWithUser = _context.ToDoListShares
+                .Where(s => s.SharedWithUserId == userId)
+                .ToList();
+
+            _context.ToDoListShares.RemoveRange(sharedWithUser);
+
+            // Saves before deleting user
+            await _context.SaveChangesAsync();
+
+            //Deletes User
             var result = await _userManager.DeleteAsync(user);
 
             if (result.Succeeded)
             {
-                TempData["SuccessMessage"] = "User deleted successfully."; 
+                TempData["SuccessMessage"] = "User and associated data deleted successfully.";
             }
             else
             {
-                TempData["ErrorMessage"] = "Error deleting user."; 
+                TempData["ErrorMessage"] = "Error deleting user.";
             }
 
-            return RedirectToAction("Index"); 
+            return RedirectToAction("Index");
         }
+
 
         public async Task<IActionResult> ViewUserToDoLists(string userId) //View users ToDoLists
         {
