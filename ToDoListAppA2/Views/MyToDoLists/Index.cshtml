@@ -55,6 +55,7 @@
                     <a asp-controller="ToDoListNodes" asp-action="Index" asp-route-source="MyToDoLists" asp-route-id="@item.Id" class="btn btn-outline-secondary btn-sm">Open</a>
                     <a asp-action="Edit" asp-route-id="@item.Id" asp-route-source="MyToDoLists" class="btn btn-outline-secondary btn-sm">Edit</a>
                     <a asp-action="Share" asp-route-id="@item.Id" class="btn btn-outline-secondary btn-sm">Share</a>
+                    <a asp-action="Unshare" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Unshare</a>
                     <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
                 </td>
             </tr>

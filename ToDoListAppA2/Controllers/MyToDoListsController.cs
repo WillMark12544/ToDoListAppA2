@@ -207,20 +207,10 @@ namespace ToDoListAppA2.Controllers
                 return NotFound();
             }
 
-            var currentUserEmail = User.Identity.Name;
-
-            // Ensure user can't share a To-Do List with themselves
-            // Compare with case insensitive match
-            if (string.Equals(email, currentUserEmail, StringComparison.OrdinalIgnoreCase))
-            {
-                ModelState.AddModelError("Email", "You can't share a To-Do List with yourself!");
-                return View(toDoList);
-            }
-
             // Check if email is null
             if (string.IsNullOrEmpty(email))
             {
-                // Error messages for user feedback, sent to <span> in Share view
+                
                 ModelState.AddModelError("Email", "The Email field is required.");
                 return View(toDoList);
             }
@@ -230,6 +220,17 @@ namespace ToDoListAppA2.Controllers
             if (user == null)
             {
                 ModelState.AddModelError("Email", "Could not find a User with that Email.");
+                return View(toDoList);
+            }
+
+            var currentUserEmail = User.Identity.Name;
+
+            // Ensure user can't share a To-Do List with themselves
+            // Compare entered email and current users email with case insensitive match
+            if (string.Equals(email, currentUserEmail, StringComparison.OrdinalIgnoreCase))
+            {
+                // Error messages for user feedback, sent to <span> in Share view
+                ModelState.AddModelError("Email", "You can't share a To-Do List with yourself!");
                 return View(toDoList);
             }
 
@@ -254,8 +255,72 @@ namespace ToDoListAppA2.Controllers
             _context.ToDoListShares.Add(toDoListShare);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-
         }
+
+        // GET: ToDoList/Unshare
+        public async Task<IActionResult> Unshare(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var toDoList = await _context.ToDoLists
+                .Include(t => t.SharedWith)
+                    .ThenInclude(ts => ts.SharedWithUser)
+                .FirstOrDefaultAsync(t => t.Id == id);
+
+            if (toDoList == null)
+            {
+                return NotFound();
+            }
+
+            return View(toDoList);
+        }
+
+        // POST: ToDoList/Unshare
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Unshare(int id, string sharedWithUserId)
+        {
+            var toDoList = await _context.ToDoLists
+                .Include(t => t.SharedWith)
+                    .ThenInclude(ts => ts.SharedWithUser)
+                .FirstOrDefaultAsync(t => t.Id == id);
+
+            // Ensure To-Do List exists
+            if (toDoList == null)
+            {
+                return NotFound();
+            }
+
+            // Ensure User Id of user to remove is not null
+            if (string.IsNullOrEmpty(sharedWithUserId))
+            {
+                ModelState.AddModelError("Email", "Please select a user to unshare the To-Do list from");
+
+
+                return View(toDoList);
+            }
+
+            // Try to obtain the share entry pertaining to the selected ToDoList, and User to remove
+            var userShareEntry = await _context.ToDoListShares
+                .FirstOrDefaultAsync(ts => ts.ToDoListId == id && ts.SharedWithUserId == sharedWithUserId);
+
+            // Ensure the ToDoListShare entry exists
+            if (userShareEntry == null) 
+            {
+                ModelState.AddModelError("Email", "This To-Do list is not shared with that user!");
+                return View(toDoList);
+            }
+
+            // If validation is successful, remove the share entry from the selected user
+            _context.ToDoListShares.Remove(userShareEntry);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+
 
         private bool ToDoListExists(int id)
         {
