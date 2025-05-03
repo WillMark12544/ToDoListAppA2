@@ -190,6 +190,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/GGPC/Source/Repos/ToDoListAppA2/ToDoListAppA2/Views/Admin/ManageShares.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTWFuYWdlU2hhcmVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/GGPC/Source/Repos/ToDoListAppA2/ToDoListAppA2/Views/Admin/ViewUserToDoLists.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVmlld1VzZXJUb0RvTGlzdHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

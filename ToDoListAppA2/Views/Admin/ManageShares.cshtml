@@ -1,0 +1,53 @@
+﻿@model List<ToDoListAppA2.Models.ToDoListShare>
+@{
+    ViewData["Title"] = "Manage Shared Users";
+    var listId = ViewBag.ListId;
+    var listTitle = ViewBag.ListTitle;
+}
+
+<h2>Shared Users for "@listTitle"</h2>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var share in Model)
+        {
+            <tr>
+                <td>@share.SharedWithUser?.Email</td>
+                <td>
+                    <form asp-action="RemoveSharedUser" method="post" class="d-inline">
+                        <input type="hidden" name="shareId" value="@share.Id" />
+                        <input type="hidden" name="listId" value="@listId" />
+                        <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h4>Add New Shared User</h4>
+<form asp-action="AddSharedUser" method="post">
+    <input type="hidden" name="listId" value="@listId" />
+    <div class="mb-3">
+        <label>Email of user to share with:</label>
+        <input type="email" name="userEmail" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+</form>
+
+<a asp-action="ViewUserToDoLists" asp-route-userId="@Model.FirstOrDefault()?.ToDoList?.UserId" class="btn btn-secondary mt-3">← Back</a>

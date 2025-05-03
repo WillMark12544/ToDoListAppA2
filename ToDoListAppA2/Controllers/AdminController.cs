@@ -210,6 +210,88 @@ namespace ToDoListAppA2.Controllers
             return RedirectToAction("ViewUserToDoLists", new { userId });
         }
 
+        [HttpGet]
+        public async Task<IActionResult> ManageShares(int listId)
+        {
+            var list = await _context.ToDoLists
+                .Include(t => t.SharedWith)
+                .ThenInclude(s => s.SharedWithUser)
+                .FirstOrDefaultAsync(t => t.Id == listId);
+
+            if (list == null)
+                return NotFound();
+
+            ViewBag.ListId = listId;
+            ViewBag.ListTitle = list.Title;
+            return View(list.SharedWith.ToList());
+        }
+
+        // Add a user to shared list by email
+        [HttpPost]
+        public async Task<IActionResult> AddSharedUser(int listId, string userEmail)
+        {
+            if (string.IsNullOrEmpty(userEmail)) // Checks Null
+            {
+                TempData["ErrorMessage"] = "Email cannot be empty.";
+                return RedirectToAction("ManageShares", new { listId });
+            }
+
+            var user = await _userManager.FindByEmailAsync(userEmail);
+            if (user == null)
+            {
+                TempData["ErrorMessage"] = "User not found.";
+                return RedirectToAction("ManageShares", new { listId });
+            }
+
+            var list = await _context.ToDoLists.FindAsync(listId); //Stops sharing with owner
+
+            if (list.UserId == user.Id)
+            {
+                TempData["ErrorMessage"] = "You cannot share a list with its owner.";
+                return RedirectToAction("ManageShares", new { listId });
+            }
+
+            //stops duplicate shares
+            bool alreadyShared = await _context.ToDoListShares.AnyAsync(s =>
+                s.ToDoListId == listId && s.SharedWithUserId == user.Id);
+
+            if (alreadyShared)
+            {
+                TempData["ErrorMessage"] = "This user is already shared on the list.";
+                return RedirectToAction("ManageShares", new { listId });
+            }
+
+            var newShare = new ToDoListShare
+            {
+                ToDoListId = listId,
+                SharedWithUserId = user.Id
+            };
+
+            _context.ToDoListShares.Add(newShare);
+            await _context.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = "User added to shared list.";
+            return RedirectToAction("ManageShares", new { listId });
+        }
+
+        //Remove User - SharedLists
+        [HttpPost]
+        public async Task<IActionResult> RemoveSharedUser(int shareId, int listId)
+        {
+            var share = await _context.ToDoListShares.FindAsync(shareId);
+            if (share == null)
+            {
+                TempData["ErrorMessage"] = "Share not found.";
+                return RedirectToAction("ManageShares", new { listId });
+            }
+
+            _context.ToDoListShares.Remove(share);
+            await _context.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = "User removed from shared list.";
+            return RedirectToAction("ManageShares", new { listId });
+        }
+
 
 
 
