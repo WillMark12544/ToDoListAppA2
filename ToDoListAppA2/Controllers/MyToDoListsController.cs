@@ -41,8 +41,22 @@ namespace ToDoListAppA2.Controllers
         }
 
         // GET: ToDoLists/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            var currentUserId = _userManager.GetUserId(User);
+
+            // Restrict normal user to create only 5 To-Do lists
+            if (User.IsInRole("Normal"))
+            {
+                var amountOfToDoLists = await _context.ToDoLists
+                    .CountAsync(t => t.UserId == currentUserId);
+
+                if (amountOfToDoLists >= 5)
+                {
+                    TempData["CreateError"] = "Normal users can only create up to 5 To-Do Lists.";
+                    return RedirectToAction(nameof(Index));
+                }
+            }
             return View();
         }
 

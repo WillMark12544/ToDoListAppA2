@@ -9,6 +9,14 @@
 <div class="d-flex justify-content-end mb-2">
     <a asp-action="Create" class="btn btn-primary">Create New To-Do List</a>
 </div>
+<div class="d-flex justify-content-end mb-3">
+    @if (TempData["CreateError"] != null)
+    {
+        <div class="text-danger">
+            @TempData["CreateError"]
+        </div>
+    }
+</div>
 <table class="table">
     <thead>
         <tr>
