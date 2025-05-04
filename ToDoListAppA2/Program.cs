@@ -4,6 +4,7 @@ using ToDoListAppA2.Data;
 using ToDoListAppA2.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.DependencyInjection;
+using Stripe;
 
 var builder = WebApplication.CreateBuilder(args);
  
@@ -33,6 +34,8 @@ builder.Services.ConfigureApplicationCookie(options =>
 });
 
 var app = builder.Build(); //build
+
+StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
 
 if (!app.Environment.IsDevelopment()) //Error page
 {

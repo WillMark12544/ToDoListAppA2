@@ -226,6 +226,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlUb0RvTGlzdHNcVW5zaGFyZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/GGPC/Source/Repos/ToDoListAppA2/ToDoListAppA2/Views/Payment/PaymentCancel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5bWVudFxQYXltZW50Q2FuY2VsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/GGPC/Source/Repos/ToDoListAppA2/ToDoListAppA2/Views/Payment/PaymentSuccess.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5bWVudFxQYXltZW50U3VjY2Vzcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/GGPC/Source/Repos/ToDoListAppA2/ToDoListAppA2/Views/Payment/Upgrade.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5bWVudFxVcGdyYWRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/GGPC/Source/Repos/ToDoListAppA2/ToDoListAppA2/Views/SharedToDoLists/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkVG9Eb0xpc3RzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
