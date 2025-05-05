@@ -1162,3 +1162,19 @@ C:\Users\GGPC\source\repos\New Version\ToDoListAppA2\obj\Debug\net8.0\ToDoListAp
 C:\Users\GGPC\source\repos\New Version\ToDoListAppA2\obj\Debug\net8.0\ref\ToDoListAppA2.dll
 C:\Users\GGPC\Source\Repos\ToDoListAppA2\ToDoListAppA2\bin\Debug\net8.0\Stripe.net.dll
 C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2\bin\Debug\net8.0\Stripe.net.dll
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2\bin\Debug\net8.0\itext.barcodes.dll
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2\bin\Debug\net8.0\itext.bouncy-castle-connector.dll
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2\bin\Debug\net8.0\itext.forms.dll
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2\bin\Debug\net8.0\itext.io.dll
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2\bin\Debug\net8.0\itext.kernel.dll
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2\bin\Debug\net8.0\itext.layout.dll
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2\bin\Debug\net8.0\itext.pdfa.dll
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2\bin\Debug\net8.0\itext.pdfua.dll
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2\bin\Debug\net8.0\itext.sign.dll
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2\bin\Debug\net8.0\itext.styledxmlparser.dll
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2\bin\Debug\net8.0\itext.svg.dll
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2\bin\Debug\net8.0\itext.commons.dll
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2\bin\Debug\net8.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2\bin\Debug\net8.0\BouncyCastle.Crypto.dll
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2\bin\Debug\net8.0\itext.bouncy-castle-adapter.dll

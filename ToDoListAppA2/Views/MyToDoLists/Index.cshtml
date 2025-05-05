@@ -6,13 +6,26 @@
 
 <h1>My To-Do Lists</h1>
 
-<div class="d-flex justify-content-end mb-2">
-    <a asp-action="Create" class="btn btn-primary">Create New To-Do List</a>
-</div>
-<div class="d-flex justify-content-end mb-3">
+<div class="mb-2">
+    <div class="d-flex justify-content-end gap-2">
+        <a asp-action="Create" class="btn btn-primary">Create New To-Do List</a>
+        @if (User.IsInRole("Normal"))
+        {
+            <span data-bs-toggle="tooltip" title="Upgrade to premium to use">
+                <button class="btn btn-primary" disabled>
+                    Export to PDF
+                </button>
+            </span>
+        }
+        else
+        {
+            <a asp-action="ExportToPDF" class="btn btn-primary">Export to PDF</a>
+        }
+
+    </div>
     @if (TempData["CreateError"] != null)
     {
-        <div class="text-danger">
+        <div class="text-danger mt-2 text-end">
             @TempData["CreateError"]
         </div>
     }

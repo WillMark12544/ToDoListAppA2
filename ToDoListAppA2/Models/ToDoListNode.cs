@@ -8,8 +8,8 @@ namespace ToDoListAppA2.Models
         public string Title { get; set; }
         public string Description { get; set; }
 
-        public string? Status { get; set; } // Only for premium users - blank for normal users
-        public DateTime? DueDate { get; set; } // Only for premium users - blank for normal users
+        public string? Status { get; set; }
+        public DateTime? DueDate { get; set; }
 
         // Foregin key to ToDoList
         [ForeignKey("ToDoListId")]
