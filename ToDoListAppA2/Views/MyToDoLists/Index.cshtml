@@ -62,11 +62,47 @@
                 <td>
                     <a asp-controller="ToDoListNodes" asp-action="Index" asp-route-source="MyToDoLists" asp-route-id="@item.Id" class="btn btn-outline-secondary btn-sm">Open</a>
                     <a asp-action="Edit" asp-route-id="@item.Id" asp-route-source="MyToDoLists" class="btn btn-outline-secondary btn-sm">Edit</a>
-                    <a asp-action="Share" asp-route-id="@item.Id" class="btn btn-outline-secondary btn-sm">Share</a>
-                    <a asp-action="Unshare" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Unshare</a>
+
+                    @if (User.IsInRole("Normal"))
+                    {
+                        <span data-bs-toggle="tooltip" title="Upgrade to premium to use">
+                            <button class="btn btn-outline-secondary btn-sm" disabled>
+                                Share
+                            </button>
+                        </span>
+                        <span data-bs-toggle="tooltip" title="Upgrade to premium to use">
+                            <button class="btn btn-warning btn-sm" disabled>
+                                Unshare
+                            </button>
+                        </span>
+                    } else
+                    {
+                        <a asp-action="Share" asp-route-id="@item.Id" class="btn btn-outline-secondary btn-sm">Share</a>
+                        <a asp-action="Unshare" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Unshare</a>
+                    }
+
+
                     <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
                 </td>
             </tr>
 }
     </tbody>
 </table>
+@section Scripts {
+    <script>
+        // Run code after page is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // Select all buttons with the upgrade tooltip
+            const buttonsWithUpgradeTooltip = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+
+            // Loop through each button, and create a tooltip for it
+            buttonsWithUpgradeTooltip.forEach(function(button) {
+                new bootstrap.Tooltip(button)
+            });
+        });
+    </script>
+}
+
+
+
