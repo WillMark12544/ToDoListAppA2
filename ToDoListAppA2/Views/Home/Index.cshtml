@@ -1,8 +1,46 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@using Microsoft.AspNetCore.Identity
+@{
+    ViewData["Title"] = "Welcome";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to ToDoListApp!</h1>
-    <p>Start by logging in or registering.</p>
+<div class="container mt-5">
+    <div class="row align-items-center">
+        <!-- Left Column: Text + Features -->
+        <div class="col-md-6">
+            <h1 class="text-white">Organize your life with <strong>TaskFlow</strong></h1>
+            <p class="lead mb-4 text-light">An effective tool made simple to help get things done.</p>
+
+            <div class="row g-3">
+                <div class="col-12">
+                    <div class="card card-custom p-3 text-center">
+                        <i class="bi bi-list-task" style="font-size: 2.5rem; color: #0d6efd;"></i>
+                        <h4 class="mt-2">Track Tasks </h4>
+                        <p>Keep track of everything going on with personalized lists.</p>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="card card-custom p-3 text-center">
+                        <i class="bi bi-share-fill" style="font-size: 2.5rem; color: #0d6efd;"></i>
+                        <h4 class="mt-2">Share Lists</h4>
+                        <p>Shared lists allow collaboration between friends and co-workers.</p>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="card card-custom p-3 text-center">
+                        <i class="bi bi-piggy-bank" style="font-size: 2.5rem; color: #0d6efd;"></i>
+                        <h4 class="mt-2">Premium Features</h4>
+                        <p>Unlock advanced features including status, due dates, and more!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Image -->
+        <div class="col-md-6 d-flex justify-content-center mt-4 mt-md-0">
+            <div class="image-window-wrapper ms-md-5">
+                <!-- push right on md+ -->
+                <div class="image-window"></div>
+            </div>
+        </div>
+    </div>
 </div>

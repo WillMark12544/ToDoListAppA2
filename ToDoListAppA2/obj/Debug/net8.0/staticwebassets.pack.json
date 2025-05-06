@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\ToDoListAppA2.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2\\wwwroot\\Images\\office-background.jpg",
+      "PackagePath": "staticwebassets\\Images\\office-background.jpg"
+    },
+    {
       "Id": "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

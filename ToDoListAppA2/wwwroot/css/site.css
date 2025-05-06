@@ -1,22 +1,185 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    html {
+        font-size: 16px;
+    }
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #285172;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
 }
+
+h1, h4 {
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+/* Home Page  */
+.card-custom {
+    background-color: white;
+    color: black;
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.image-window-wrapper {
+    width: 600px;
+    height: 600px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-window {
+    background-image: url('/images/office-background.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 600px;
+    height: 600px;
+    border-top-right-radius: 600px;
+    border-bottom-right-radius: 600px;
+}
+
+/* Navbar */
+.navbar .navbar-brand,
+.navbar .nav-link {
+    color: white !important;
+}
+
+.navbar-auth-link {
+    color: white !important;
+    background-color: transparent;
+    border: none;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+    .navbar-auth-link:hover {
+        color: #cccccc !important;
+        background-color: transparent;
+    }
+
+/* Login/Register navbar buttons */
+.btn-dark-grey {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+    .btn-dark-grey:hover {
+        background-color: #dee2e6;
+        color: #212529;
+        border-color: #dee2e6;
+    }
+
+/* Footer */
+footer {
+    background-color: #000 !important;
+    color: white !important;
+}
+
+
+
+/* Login & Register Pages */
+.btn-primary {
+    background-color: black !important;
+    border-color: black !important;
+}
+
+    .btn-primary:hover {
+        background-color: #333 !important;
+        border-color: #333 !important;
+    }
+
+
+input::placeholder {
+    color: #ccc !important;
+    opacity: 1;
+}
+
+
+input.form-control,
+select.form-control {
+    background-color: white !important;
+    color: black !important;
+}
+
+/* Black Buttons "Forgot your password?" */
+.identity-links a {
+    display: inline-block;
+    background-color: black;
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+    .identity-links a:hover {
+        background-color: #333;
+        color: #fff;
+        text-decoration: none;
+    }
+
+/* Text Boxes  */
+.floating-label {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+    .floating-label input {
+        width: 100%;
+        padding: 1rem 0.75rem 0.25rem;
+        background-color: white !important;
+        color: black !important;
+        border: 1px solid #ced4da;
+        border-radius: 0.5rem;
+    }
+
+    .floating-label label {
+        position: absolute;
+        top: 1rem;
+        left: 0.75rem;
+        color: #aaa;
+        pointer-events: none;
+        transition: all 0.2s ease-out;
+        background-color: white;
+        padding: 0 0.25rem;
+    }
+
+    .floating-label input:focus + label,
+    .floating-label input:not(:placeholder-shown) + label {
+        top: 0.3rem;
+        left: 0.6rem;
+        font-size: 0.8rem;
+        color: #333;
+    }
+
+/* Center login/register pages */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+

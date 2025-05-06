@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "M+FpIj44jpbthHlDoFWtr74H1Rmc67aYVYEn0hRcsNg=",
+  "Hash": "xLGRA5u4CpqKM0kukhZ2ej6iDznKgNlhijP7S2dizeQ=",
   "Source": "ToDoListAppA2",
   "BasePath": "_content/ToDoListAppA2",
   "Mode": "Default",
@@ -1231,6 +1231,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2\\wwwroot\\Images\\office-background.jpg",
+      "SourceId": "ToDoListAppA2",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2\\wwwroot\\",
+      "BasePath": "_content/ToDoListAppA2",
+      "RelativePath": "Images/office-background.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\office-background.jpg"
     },
     {
       "Identity": "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2\\wwwroot\\js\\site.js",
