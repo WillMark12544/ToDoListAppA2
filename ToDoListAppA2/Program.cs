@@ -5,6 +5,7 @@ using ToDoListAppA2.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.DependencyInjection;
 using Stripe;
+using NuGet.Packaging;
 
 var builder = WebApplication.CreateBuilder(args);
  
@@ -19,11 +20,6 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => //Identity
 .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddControllersWithViews(); //Views
-
-//builder.Services.ConfigureApplicationCookie(options => 
-//{
-//    options.LoginPath = "/Identity/Account/Login";
-//});
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
@@ -49,16 +45,6 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthentication();
-
-//app.Use(async (context, next) =>
-//{
-//    //Fix for not signing out user when starting application
-//    if (context.User.Identity.IsAuthenticated && !context.Request.Path.StartsWithSegments("/Identity/Account/Login"))
-//    {
-//        await context.SignOutAsync(IdentityConstants.ApplicationScheme);
-//    }
-//    await next();
-//});
 
 app.UseAuthorization();
 

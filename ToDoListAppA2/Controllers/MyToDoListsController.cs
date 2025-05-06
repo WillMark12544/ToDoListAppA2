@@ -1,8 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Threading.Tasks;
 using Elfie.Serialization;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+using iText.Layout.Properties;
+using iText.Kernel.Font;
+using iText.IO.Font.Constants;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -10,6 +17,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal;
 using ToDoListAppA2.Data;
 using ToDoListAppA2.Models;
+using iText.StyledXmlParser.Jsoup.Nodes;
+
 
 namespace ToDoListAppA2.Controllers
 {
@@ -23,6 +32,102 @@ namespace ToDoListAppA2.Controllers
         {
             _context = context;
             _userManager = userManager;
+        }
+
+        // Export current users To-Do Lists as a PDF, Premium only
+        public async Task<IActionResult> ExportToPDF()
+        {
+            // Load fonts for PDF formatting
+            PdfFont boldFont = PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD);
+            PdfFont regularFont = PdfFontFactory.CreateFont(StandardFonts.HELVETICA);
+
+            // Get the current users To-Do Lists
+            var currentUserId = _userManager.GetUserId(User);
+            var toDoLists = await _context.ToDoLists
+                .Where(t => t.UserId == currentUserId)
+                .Include(t => t.ToDoListNodes)
+                .Include(t => t.SharedWith)
+                    .ThenInclude(ts => ts.SharedWithUser)
+                .ToListAsync();
+
+            byte[] pdfBytes;
+
+            using (var stream = new MemoryStream())
+            {
+                var writer = new PdfWriter(stream);
+                var pdf = new PdfDocument(writer);
+                var doc = new iText.Layout.Document(pdf);
+
+                // To-Do List main title
+                doc.Add(new Paragraph("My To-Do Lists").SetFont(boldFont).SetFontSize(32));
+
+                foreach (var list in toDoLists)
+                {
+                    // To-Do List title and description
+                    doc.Add(new Paragraph()
+                        .Add(new Text("Title: ").SetFont(boldFont))
+                        .Add(new Text(list.Title).SetFont(regularFont)));
+
+                    doc.Add(new Paragraph()
+                        .Add(new Text("Description: ").SetFont(boldFont))
+                        .Add(new Text(list.Description).SetFont(regularFont)));
+
+                    // Shared users
+                    if (list.SharedWith?.Any() == true)
+                    {
+                        var userEmails = list.SharedWith
+                            .Select(ts => ts.SharedWithUser?.Email ?? "Unknown user");
+
+                        string emailList = string.Join(", ", userEmails);
+                        doc.Add(new Paragraph()
+                            .Add(new Text("Shared With: ").SetFont(boldFont))
+                            .Add(new Text(emailList).SetFont(regularFont)));
+                    }
+                    else
+                    {
+                        doc.Add(new Paragraph()
+                            .Add(new Text("Shared With: ").SetFont(boldFont))
+                            .Add(new Text("None").SetFont(regularFont)));
+                    }
+
+                    // To-Do List nodes
+                    if (list.ToDoListNodes.Any())
+                    {
+                        foreach (var item in list.ToDoListNodes)
+                        {
+                            doc.Add(new Paragraph()
+                                .Add(new Text("Title: ").SetFont(boldFont))
+                                .Add(new Text(item.Title ?? "No Title").SetFont(regularFont))
+                                .SetMarginLeft(20));
+
+                            doc.Add(new Paragraph()
+                                .Add(new Text("Description: ").SetFont(boldFont))
+                                .Add(new Text(item.Description ?? "No Description").SetFont(regularFont))
+                                .SetMarginLeft(20));
+
+                            doc.Add(new Paragraph()
+                                .Add(new Text("Due Date: ").SetFont(boldFont))
+                                .Add(new Text(item.DueDate?.ToString("dd-MM-yy") ?? "No Due Date").SetFont(regularFont))
+                                .SetMarginLeft(20));
+
+                            doc.Add(new Paragraph()
+                                .Add(new Text("Status: ").SetFont(boldFont))
+                                .Add(new Text(item.Status ?? "No Status").SetFont(regularFont))
+                                .SetMarginLeft(20));
+
+                            doc.Add(new Paragraph("\n"));
+                        }
+                    }
+                    else
+                    {
+                        doc.Add(new Paragraph("No To-Do List items.").SetMarginLeft(20));
+                    }
+                    doc.Add(new Paragraph("\n"));
+                }
+                doc.Close();
+                pdfBytes = stream.ToArray();
+            }
+            return File(pdfBytes, "application/pdf", "ToDoLists.pdf");
         }
 
         // GET: ToDoLists
@@ -41,8 +146,22 @@ namespace ToDoListAppA2.Controllers
         }
 
         // GET: ToDoLists/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            var currentUserId = _userManager.GetUserId(User);
+
+            // Restrict normal user to create only 5 To-Do lists
+            if (User.IsInRole("Normal"))
+            {
+                var amountOfToDoLists = await _context.ToDoLists
+                    .CountAsync(t => t.UserId == currentUserId);
+
+                if (amountOfToDoLists >= 5)
+                {
+                    TempData["CreateError"] = "Normal users can only create up to 5 To-Do Lists.";
+                    return RedirectToAction(nameof(Index));
+                }
+            }
             return View();
         }
 

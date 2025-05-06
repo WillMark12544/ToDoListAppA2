@@ -16,7 +16,5 @@ namespace ToDoListAppA2.Models
         [ForeignKey("SharedWithUserId")]
         public ApplicationUser? SharedWithUser { get; set; }
         public string SharedWithUserId { get; set; }
-
-        
     }
 }
