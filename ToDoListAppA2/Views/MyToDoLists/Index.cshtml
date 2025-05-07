@@ -90,11 +90,9 @@
                         </span>
                     } else
                     {
-                        <a asp-action="Share" asp-route-id="@item.Id" class="btn btn-outline-secondary btn-sm">Share</a>
-                        <a asp-action="Unshare" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Unshare</a>
+                        <a asp-controller="SharedToDoLists" asp-action="Share" asp-route-id="@item.Id" class="btn btn-outline-secondary btn-sm">Share</a>
+                        <a asp-controller="SharedToDoLists" asp-action="Unshare" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Unshare</a>
                     }
-
-
                     <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
                 </td>
             </tr>

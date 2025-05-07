@@ -6,11 +6,15 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.DependencyInjection;
 using Stripe;
 using NuGet.Packaging;
+using ToDoListAppA2.DataAccess.Repository.IRepository;
+using ToDoListAppA2.DataAccess.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
  
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))); //Default connection
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>(); // Register UnitOfWork - Manages changes to DB
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => //Identity
 {

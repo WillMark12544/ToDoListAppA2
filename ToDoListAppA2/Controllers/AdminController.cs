@@ -55,9 +55,6 @@ namespace ToDoListAppA2.Controllers
             return View(userViewModels);
         }
 
-
-
-
         [HttpPost]
         public async Task<IActionResult> ChangeRole(string userId, string role) //Change role function
         {
@@ -145,7 +142,6 @@ namespace ToDoListAppA2.Controllers
 
             return RedirectToAction("Index");
         }
-
 
         public async Task<IActionResult> ViewUserToDoLists(string userId) //View users ToDoLists
         {
@@ -291,10 +287,5 @@ namespace ToDoListAppA2.Controllers
             TempData["SuccessMessage"] = "User removed from shared list.";
             return RedirectToAction("ManageShares", new { listId });
         }
-
-
-
-
-
     }
 }

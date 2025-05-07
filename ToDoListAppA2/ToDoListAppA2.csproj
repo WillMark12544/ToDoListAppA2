@@ -30,4 +30,9 @@
 
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ToDoListAppA2.DataAccess\ToDoListAppA2.DataAccess.csproj" />
+    <ProjectReference Include="..\ToDoListAppA2.Models\ToDoListAppA2.Models.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1178,3 +1178,7 @@ C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2\bin\Debug\
 C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2\bin\Debug\net8.0\BouncyCastle.Crypto.dll
 C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
 C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2\bin\Debug\net8.0\itext.bouncy-castle-adapter.dll
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2\bin\Debug\net8.0\ToDoListAppA2.DataAccess.dll
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2\bin\Debug\net8.0\ToDoListAppA2.Models.dll
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2\bin\Debug\net8.0\ToDoListAppA2.DataAccess.pdb
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2\bin\Debug\net8.0\ToDoListAppA2.Models.pdb

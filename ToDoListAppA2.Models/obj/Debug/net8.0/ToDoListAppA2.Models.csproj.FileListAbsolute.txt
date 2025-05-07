@@ -1,0 +1,13 @@
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2.Models\bin\Debug\net8.0\ToDoListAppA2.Models.deps.json
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2.Models\bin\Debug\net8.0\ToDoListAppA2.Models.dll
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2.Models\bin\Debug\net8.0\ToDoListAppA2.Models.pdb
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2.Models\obj\Debug\net8.0\ToDoListAppA2.Models.csproj.AssemblyReference.cache
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2.Models\obj\Debug\net8.0\ToDoListAppA2.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2.Models\obj\Debug\net8.0\ToDoListAppA2.Models.AssemblyInfoInputs.cache
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2.Models\obj\Debug\net8.0\ToDoListAppA2.Models.AssemblyInfo.cs
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2.Models\obj\Debug\net8.0\ToDoListAppA2.Models.csproj.CoreCompileInputs.cache
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2.Models\obj\Debug\net8.0\ToDoListAppA2.Models.sourcelink.json
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2.Models\obj\Debug\net8.0\ToDoListAppA2.Models.dll
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2.Models\obj\Debug\net8.0\refint\ToDoListAppA2.Models.dll
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2.Models\obj\Debug\net8.0\ToDoListAppA2.Models.pdb
+C:\Users\alexk\source\repos\WillMark12544\ToDoListAppA2\ToDoListAppA2.Models\obj\Debug\net8.0\ref\ToDoListAppA2.Models.dll

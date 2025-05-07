@@ -16,6 +16,8 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "8.0.7",
           "Portable.BouncyCastle": "1.9.0",
           "Stripe.net": "48.1.0",
+          "ToDoListAppA2.DataAccess": "1.0.0",
+          "ToDoListAppA2.Models": "1.0.0",
           "itext7": "9.1.0",
           "itext7.bouncy-castle-adapter": "9.1.0"
         },
@@ -2642,6 +2644,32 @@
           "System.Threading": "4.3.0",
           "System.Xml.ReaderWriter": "4.3.0"
         }
+      },
+      "ToDoListAppA2.DataAccess/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.15",
+          "Microsoft.AspNetCore.Identity.UI": "8.0.15",
+          "Microsoft.EntityFrameworkCore.SqlServer": "8.0.15",
+          "Microsoft.EntityFrameworkCore.Sqlite": "8.0.11",
+          "ToDoListAppA2.Models": "1.0.0"
+        },
+        "runtime": {
+          "ToDoListAppA2.DataAccess.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "ToDoListAppA2.Models/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.15"
+        },
+        "runtime": {
+          "ToDoListAppA2.Models.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
       }
     }
   },
@@ -4267,6 +4295,16 @@
       "sha512": "sha512-lJ8AxvkX7GQxpC6GFCeBj8ThYVyQczx2+f/cWHJU8tjS7YfI6Cv6bon70jVEgs2CiFbmmM8b9j1oZVx0dSI2Ww==",
       "path": "system.xml.xmldocument/4.3.0",
       "hashPath": "system.xml.xmldocument.4.3.0.nupkg.sha512"
+    },
+    "ToDoListAppA2.DataAccess/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ToDoListAppA2.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }
