@@ -5,38 +5,37 @@
 }
 
 <h1>Unshare To-Do List</h1>
-
 <hr />
+
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Unshare">
+    <div class="col-md-6">
+        <form asp-action="Unshare" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="mb-3">
                 <label asp-for="Title" class="form-label"></label>
                 <input asp-for="Title" class="form-control" disabled />
             </div>
+
             <div class="mb-3">
-                <label for="email" class="form-label">Select user to unadd</label>
+                <label for="sharedWithUserId" class="form-label">Select user to unshare with</label>
                 <select class="form-select" id="sharedWithUserId" name="sharedWithUserId">
                     <option value="">-- Select Email --</option>
                     @foreach (var item in Model.SharedWith)
                     {
-                        <option value="@item.SharedWithUserId">@item.SharedWithUser?.Email</option>
+                        if (item.SharedWithUser != null) 
+                        {
+                            <option value="@item.SharedWithUserId">@item.SharedWithUser.Email</option>
+                        }
                     }
                 </select>
 
-                <!--
-                    The ToDoList Model has no email property so email validation errors
-                    are handled manually here using ViewData.ModelState.
-                    You can not use asp-validation-for like in previous views as the model
-                    does not have the corresponding property
-                -->
-                @if (ViewData.ModelState["Email"] != null && ViewData.ModelState["Email"].Errors.Count > 0)
+                @if (ViewData.ModelState["Email"]?.Errors.Count > 0)
                 {
                     <span class="text-danger">@ViewData.ModelState["Email"].Errors[0].ErrorMessage</span>
                 }
             </div>
+
             <input type="hidden" asp-for="Id" />
 
             <div class="mb-3">
@@ -48,7 +47,5 @@
 </div>
 
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    @await Html.PartialAsync("_ValidationScriptsPartial")
 }

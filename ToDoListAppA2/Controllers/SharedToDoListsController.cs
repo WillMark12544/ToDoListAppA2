@@ -14,11 +14,13 @@ namespace ToDoListAppA2.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly ApplicationDbContext _context;
 
-        public SharedToDoListsController(IUnitOfWork unitOfWork, UserManager<ApplicationUser> userManager)
+        public SharedToDoListsController(IUnitOfWork unitOfWork, UserManager<ApplicationUser> userManager, ApplicationDbContext context)
         {
             _unitOfWork = unitOfWork;
             _userManager = userManager;
+            _context = context;
         }
 
         // GET: ToDoListsShares
@@ -150,17 +152,14 @@ namespace ToDoListAppA2.Controllers
         // GET: ToDoList/Unshare
         public async Task<IActionResult> Unshare(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
-            var toDoList = await _unitOfWork.myToDoLists.GetByIdAsync(id.Value);
+            var toDoList = await _context.ToDoLists
+                .Include(t => t.SharedWith)
+                .ThenInclude(s => s.SharedWithUser)
+                .FirstOrDefaultAsync(t => t.Id == id.Value); 
 
-            if (toDoList == null)
-            {
-                return NotFound();
-            }
+            if (toDoList == null) return NotFound();
 
             return View(toDoList);
         }
