@@ -146,7 +146,7 @@ namespace ToDoListAppA2.Controllers
             // Add new ToDoListShare to database
             await _unitOfWork.sharedToDoLists.AddAsync(toDoListShare);
             await _unitOfWork.SaveAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "MyToDoLists");
         }
 
         // GET: ToDoList/Unshare
@@ -197,7 +197,7 @@ namespace ToDoListAppA2.Controllers
             // If validation is successful, remove the share entry from the selected user
             await _unitOfWork.sharedToDoLists.DeleteAsync(userShareEntry);
             await _unitOfWork.SaveAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "MyToDoLists");
         }
     }
 }
