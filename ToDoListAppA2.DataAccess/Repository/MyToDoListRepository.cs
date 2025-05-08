@@ -41,8 +41,11 @@ namespace ToDoListAppA2.DataAccess.Repository
         {
             return await _context.ToDoLists
                 .Include(t => t.ToDoListNodes)
+                .Include(t => t.SharedWith)
+                    .ThenInclude(ts => ts.SharedWithUser)
                 .FirstOrDefaultAsync(t => t.Id == id);
         }
+
 
         public async Task<bool> IsSharedWithUserAsync(int toDoListId, string userId)
         {

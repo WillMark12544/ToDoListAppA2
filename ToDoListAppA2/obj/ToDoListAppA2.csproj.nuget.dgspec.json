@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\GGPC\\source\\repos\\ToDoListAppA2\\ToDoListAppA2\\ToDoListAppA2.csproj": {}
+    "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2\\ToDoListAppA2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\GGPC\\source\\repos\\ToDoListAppA2\\ToDoListAppA2.DataAccess\\ToDoListAppA2.DataAccess.csproj": {
+    "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.DataAccess\\ToDoListAppA2.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\GGPC\\source\\repos\\ToDoListAppA2\\ToDoListAppA2.DataAccess\\ToDoListAppA2.DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.DataAccess\\ToDoListAppA2.DataAccess.csproj",
         "projectName": "ToDoListAppA2.DataAccess",
-        "projectPath": "C:\\Users\\GGPC\\source\\repos\\ToDoListAppA2\\ToDoListAppA2.DataAccess\\ToDoListAppA2.DataAccess.csproj",
+        "projectPath": "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.DataAccess\\ToDoListAppA2.DataAccess.csproj",
         "packagesPath": "C:\\Users\\GGPC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\GGPC\\source\\repos\\ToDoListAppA2\\ToDoListAppA2.DataAccess\\obj\\",
+        "outputPath": "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\GGPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -29,8 +29,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\GGPC\\source\\repos\\ToDoListAppA2\\ToDoListAppA2.Models\\ToDoListAppA2.Models.csproj": {
-                "projectPath": "C:\\Users\\GGPC\\source\\repos\\ToDoListAppA2\\ToDoListAppA2.Models\\ToDoListAppA2.Models.csproj"
+              "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.Models\\ToDoListAppA2.Models.csproj": {
+                "projectPath": "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.Models\\ToDoListAppA2.Models.csproj"
               }
             }
           }
@@ -93,12 +93,12 @@
         }
       }
     },
-    "C:\\Users\\GGPC\\source\\repos\\ToDoListAppA2\\ToDoListAppA2.Models\\ToDoListAppA2.Models.csproj": {
+    "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.Models\\ToDoListAppA2.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\GGPC\\source\\repos\\ToDoListAppA2\\ToDoListAppA2.Models\\ToDoListAppA2.Models.csproj",
+        "projectUniqueName": "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.Models\\ToDoListAppA2.Models.csproj",
         "projectName": "ToDoListAppA2.Models",
-        "projectPath": "C:\\Users\\GGPC\\source\\repos\\ToDoListAppA2\\ToDoListAppA2.Models\\ToDoListAppA2.Models.csproj",
+        "projectPath": "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.Models\\ToDoListAppA2.Models.csproj",
         "packagesPath": "C:\\Users\\GGPC\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\GGPC\\source\\repos\\ToDoListAppA2\\ToDoListAppA2.Models\\obj\\",
         "projectStyle": "PackageReference",
@@ -160,14 +160,14 @@
         }
       }
     },
-    "C:\\Users\\GGPC\\source\\repos\\ToDoListAppA2\\ToDoListAppA2\\ToDoListAppA2.csproj": {
+    "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2\\ToDoListAppA2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\GGPC\\source\\repos\\ToDoListAppA2\\ToDoListAppA2\\ToDoListAppA2.csproj",
+        "projectUniqueName": "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2\\ToDoListAppA2.csproj",
         "projectName": "ToDoListAppA2",
-        "projectPath": "C:\\Users\\GGPC\\source\\repos\\ToDoListAppA2\\ToDoListAppA2\\ToDoListAppA2.csproj",
+        "projectPath": "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2\\ToDoListAppA2.csproj",
         "packagesPath": "C:\\Users\\GGPC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\GGPC\\source\\repos\\ToDoListAppA2\\ToDoListAppA2\\obj\\",
+        "outputPath": "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\GGPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -185,11 +185,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\GGPC\\source\\repos\\ToDoListAppA2\\ToDoListAppA2.DataAccess\\ToDoListAppA2.DataAccess.csproj": {
-                "projectPath": "C:\\Users\\GGPC\\source\\repos\\ToDoListAppA2\\ToDoListAppA2.DataAccess\\ToDoListAppA2.DataAccess.csproj"
+              "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.DataAccess\\ToDoListAppA2.DataAccess.csproj": {
+                "projectPath": "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.DataAccess\\ToDoListAppA2.DataAccess.csproj"
               },
-              "C:\\Users\\GGPC\\source\\repos\\ToDoListAppA2\\ToDoListAppA2.Models\\ToDoListAppA2.Models.csproj": {
-                "projectPath": "C:\\Users\\GGPC\\source\\repos\\ToDoListAppA2\\ToDoListAppA2.Models\\ToDoListAppA2.Models.csproj"
+              "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.Models\\ToDoListAppA2.Models.csproj": {
+                "projectPath": "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.Models\\ToDoListAppA2.Models.csproj"
               }
             }
           }

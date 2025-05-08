@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\GGPC\\source\\repos\\ToDoListAppA2\\ClassLibrarToDoListAppA2.Utilities\\ToDoListAppA2.Utility.csproj": {}
+    "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ClassLibrarToDoListAppA2.Utilities\\ToDoListAppA2.Utility.csproj": {}
   },
   "projects": {
-    "C:\\Users\\GGPC\\source\\repos\\ToDoListAppA2\\ClassLibrarToDoListAppA2.Utilities\\ToDoListAppA2.Utility.csproj": {
+    "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ClassLibrarToDoListAppA2.Utilities\\ToDoListAppA2.Utility.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\GGPC\\source\\repos\\ToDoListAppA2\\ClassLibrarToDoListAppA2.Utilities\\ToDoListAppA2.Utility.csproj",
+        "projectUniqueName": "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ClassLibrarToDoListAppA2.Utilities\\ToDoListAppA2.Utility.csproj",
         "projectName": "ToDoListAppA2.Utility",
-        "projectPath": "C:\\Users\\GGPC\\source\\repos\\ToDoListAppA2\\ClassLibrarToDoListAppA2.Utilities\\ToDoListAppA2.Utility.csproj",
+        "projectPath": "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ClassLibrarToDoListAppA2.Utilities\\ToDoListAppA2.Utility.csproj",
         "packagesPath": "C:\\Users\\GGPC\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\GGPC\\source\\repos\\ToDoListAppA2\\ClassLibrarToDoListAppA2.Utilities\\obj\\",
         "projectStyle": "PackageReference",
