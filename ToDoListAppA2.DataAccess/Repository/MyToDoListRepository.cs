@@ -37,6 +37,13 @@ namespace ToDoListAppA2.DataAccess.Repository
                 .ToListAsync();
         }
 
+        public async Task<ToDoList?> GetNodesForToDoList(int id)
+        {
+            return await _context.ToDoLists
+                .Include(t => t.ToDoListNodes)
+                .FirstOrDefaultAsync(t => t.Id == id);
+        }
+
         public async Task<bool> IsSharedWithUserAsync(int toDoListId, string userId)
         {
             return await _context.ToDoListShares

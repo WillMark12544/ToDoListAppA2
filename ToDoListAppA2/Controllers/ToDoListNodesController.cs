@@ -28,7 +28,7 @@ namespace ToDoListAppA2.Controllers
                 return NotFound();
             }
 
-            var toDoList = await _unitOfWork.myToDoLists.GetByIdAsync(id.Value);
+            var toDoList = await _unitOfWork.myToDoLists.GetNodesForToDoList(id.Value);
 
             if (toDoList == null)
             {
