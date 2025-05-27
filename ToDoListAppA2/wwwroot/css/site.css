@@ -91,29 +91,14 @@ h1, h4 {
 
 /* Footer */
 footer {
-    background-color: #000 !important;
+/*    background-color: #000 !important;*/
     color: white !important;
 }
-
-
-
-/* Login & Register Pages */
-.btn-primary {
-    background-color: black !important;
-    border-color: black !important;
-}
-
-    .btn-primary:hover {
-        background-color: #333 !important;
-        border-color: #333 !important;
-    }
-
 
 input::placeholder {
     color: #ccc !important;
     opacity: 1;
 }
-
 
 input.form-control,
 select.form-control {
