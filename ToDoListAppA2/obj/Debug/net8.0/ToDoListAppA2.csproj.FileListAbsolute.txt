@@ -1499,12 +1499,6 @@ C:\Users\alexk\Source\Repos\ToDoListAppA2\ToDoListAppA2\obj\Debug\net8.0\scopedc
 C:\Users\alexk\Source\Repos\ToDoListAppA2\ToDoListAppA2\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\alexk\Source\Repos\ToDoListAppA2\ToDoListAppA2\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\alexk\Source\Repos\ToDoListAppA2\ToDoListAppA2\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\alexk\Source\Repos\ToDoListAppA2\ToDoListAppA2\obj\Debug\net8.0\staticwebassets\msbuild.ToDoListAppA2.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\alexk\Source\Repos\ToDoListAppA2\ToDoListAppA2\obj\Debug\net8.0\staticwebassets\msbuild.ToDoListAppA2.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
-C:\Users\alexk\Source\Repos\ToDoListAppA2\ToDoListAppA2\obj\Debug\net8.0\staticwebassets\msbuild.build.ToDoListAppA2.props
-C:\Users\alexk\Source\Repos\ToDoListAppA2\ToDoListAppA2\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.ToDoListAppA2.props
-C:\Users\alexk\Source\Repos\ToDoListAppA2\ToDoListAppA2\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.ToDoListAppA2.props
-C:\Users\alexk\Source\Repos\ToDoListAppA2\ToDoListAppA2\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\alexk\Source\Repos\ToDoListAppA2\ToDoListAppA2\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\alexk\Source\Repos\ToDoListAppA2\ToDoListAppA2\obj\Debug\net8.0\ToDoList.9D13122B.Up2Date
 C:\Users\alexk\Source\Repos\ToDoListAppA2\ToDoListAppA2\obj\Debug\net8.0\ToDoListAppA2.dll
@@ -1512,3 +1506,4 @@ C:\Users\alexk\Source\Repos\ToDoListAppA2\ToDoListAppA2\obj\Debug\net8.0\refint\
 C:\Users\alexk\Source\Repos\ToDoListAppA2\ToDoListAppA2\obj\Debug\net8.0\ToDoListAppA2.pdb
 C:\Users\alexk\Source\Repos\ToDoListAppA2\ToDoListAppA2\obj\Debug\net8.0\ToDoListAppA2.genruntimeconfig.cache
 C:\Users\alexk\Source\Repos\ToDoListAppA2\ToDoListAppA2\obj\Debug\net8.0\ref\ToDoListAppA2.dll
+C:\Users\alexk\Source\Repos\ToDoListAppA2\ToDoListAppA2\obj\Debug\net8.0\staticwebassets.build.json.cache

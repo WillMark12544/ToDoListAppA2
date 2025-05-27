@@ -12,7 +12,7 @@
 </head>
 <body data-bs-theme="light">
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+        <nav class="navbar navbar-expand-lg" style="background-color: #2694af;">
             <div class="container-fluid">
                 <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">TaskFlow</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -68,7 +68,7 @@
                         {
                             // Show Hello message if user is logged in
                             <li class="nav-item d-flex align-items-center">
-                                <span class="navbar-text me-3">
+                                <span class="navbar-text me-3 text-white">
                                     Hello, @User.Identity.Name
                                 </span>
                             </li>
@@ -107,7 +107,7 @@
         </main>
     </div>
 
-    <footer class="footer bg-black text-white py-3">
+    <footer class="footer text-white py-3" style="background-color: #2694af;">
         <div class="container text-center">
             &copy; 2025 - ToDoListAppA2
         </div>
