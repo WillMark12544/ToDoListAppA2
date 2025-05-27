@@ -150,7 +150,7 @@ namespace ToDoListAppA2.Controllers
 
                 if (amountOfToDoLists >= 5)
                 {
-                    TempData["CreateError"] = "Normal users can only create up to 5 To-Do Lists.";
+                    TempData["ErrorMessage"] = "Normal users can only create up to 5 To-Do Lists.";
                     return RedirectToAction(nameof(Index));
                 }
             }
@@ -167,6 +167,7 @@ namespace ToDoListAppA2.Controllers
                 toDoList.UserId = _userManager.GetUserId(User);
                 await _unitOfWork.myToDoLists.AddAsync(toDoList);
                 await _unitOfWork.SaveAsync();
+                TempData["SuccessMessage"] = "To-Do List created successfully!";
                 return RedirectToAction(nameof(Index));
             }
             return View(toDoList);
@@ -237,7 +238,8 @@ namespace ToDoListAppA2.Controllers
             {
                 await _unitOfWork.myToDoLists.UpdateAsync(toDoList);
                 await _unitOfWork.SaveAsync();
-                
+                TempData["SuccessMessage"] = "To-Do List updated successfully!";
+
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -284,6 +286,7 @@ namespace ToDoListAppA2.Controllers
             {
                 await _unitOfWork.myToDoLists.DeleteAsync(toDoList);
                 await _unitOfWork.SaveAsync();
+                TempData["SuccessMessage"] = "To-Do List deleted successfully!";
             }
 
             return RedirectToAction(nameof(Index));

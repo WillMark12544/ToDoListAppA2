@@ -56,34 +56,44 @@ namespace ToDoListAppA2.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> ChangeRole(string userId, string role) //Change role function
+        public async Task<IActionResult> ChangeRole(string userId, string role)
         {
-
-            var user = await _userManager.FindByIdAsync(userId); //Finds User
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                TempData["ErrorMessage"] = "User not found.";
+                return RedirectToAction("Index");
+            }
 
             var currentRoles = await _userManager.GetRolesAsync(user);
-            var existingRole = currentRoles.FirstOrDefault(); 
+            var existingRole = currentRoles.FirstOrDefault();
 
+            // If the role is the same, do nothing and skip toast
+            if (existingRole == role)
+            {
+                TempData["InfoMessage"] = "No changes were made. User is already in the selected role.";
+                return RedirectToAction("Index");
+            }
+
+            // Remove current role if it exists
             if (!string.IsNullOrEmpty(existingRole))
             {
-                //Removes users current role
                 await _userManager.RemoveFromRoleAsync(user, existingRole);
             }
 
-            //Adds RoleSs
+            // Add the new role
             var addRoleResult = await _userManager.AddToRoleAsync(user, role);
-
             if (!addRoleResult.Succeeded)
             {
-                //Redirect if failure
                 foreach (var error in addRoleResult.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
+                TempData["ErrorMessage"] = "Changing user role unsuccessful.";
                 return RedirectToAction("Index");
             }
 
-            // On success, redirect to the index page
+            TempData["SuccessMessage"] = "User's role changed successfully.";
             return RedirectToAction("Index");
         }
 
@@ -133,7 +143,7 @@ namespace ToDoListAppA2.Controllers
 
             if (result.Succeeded)
             {
-                TempData["SuccessMessage"] = "User and associated data deleted successfully.";
+                TempData["SuccessMessage"] = "User deleted successfully.";
             }
             else
             {
@@ -149,7 +159,6 @@ namespace ToDoListAppA2.Controllers
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
             {
-                TempData["ErrorMessage"] = "User not found.";
                 return RedirectToAction("Index");
             }
 
@@ -188,6 +197,7 @@ namespace ToDoListAppA2.Controllers
             existing.Description = updatedList.Description;
 
             await _context.SaveChangesAsync();
+            TempData["SuccessMessage"] = "To-Do List updated successfully!";
             return RedirectToAction("ViewUserToDoLists", new { userId = existing.UserId });
         }
 
@@ -203,6 +213,7 @@ namespace ToDoListAppA2.Controllers
             _context.ToDoLists.Remove(list);
             await _context.SaveChangesAsync();
 
+            TempData["SuccessMessage"] = "To-Do List deleted successfully!";
             return RedirectToAction("ViewUserToDoLists", new { userId });
         }
 

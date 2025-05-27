@@ -131,6 +131,7 @@ namespace ToDoListAppA2.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+                    TempData["SuccessMessage"] = "Registered successfully!";
                     await _userManager.AddToRoleAsync(user, "Normal"); //New Account is set to normal
 
 

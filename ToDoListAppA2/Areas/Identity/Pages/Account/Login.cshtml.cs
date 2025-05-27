@@ -118,7 +118,7 @@ namespace ToDoListAppA2.Areas.Identity.Pages.Account
                     //Stops "Disabled" accounts
                     if (roles.Contains("Disabled"))
                     {
-                        ModelState.AddModelError(string.Empty, "Your account has been disabled. Please contact support.");
+                        TempData["InfoMessage"] = "Your account has been disabled. Please contact support.";
                         return Page();
                     }
                 }
@@ -128,6 +128,7 @@ namespace ToDoListAppA2.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+                    TempData["SuccessMessage"] = "Logged in successfully!";
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)

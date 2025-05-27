@@ -62,6 +62,7 @@ namespace ToDoListAppA2.Controllers
             {
                 await _unitOfWork.toDoListNodes.AddAsync(toDoListNode);
                 await _unitOfWork.SaveAsync();
+                TempData["SuccessMessage"] = "To-Do List Node Created Successfully.";
                 return RedirectToAction(nameof(Index), new { id = toDoListNode.ToDoListId, source = source});
             }
 
@@ -122,6 +123,7 @@ namespace ToDoListAppA2.Controllers
             }
 
             ViewBag.Source = source;
+            TempData["SuccessMessage"] = "To-Do List Node Edited Successfully.";
             return RedirectToAction(nameof(Index), new { id = toDoListNode.ToDoListId, source = source});
         }
 
@@ -158,6 +160,7 @@ namespace ToDoListAppA2.Controllers
             }
 
             ViewBag.Source = source;
+            TempData["SuccessMessage"] = "To-Do List Node Deleted Successfully.";
             return RedirectToAction(nameof(Index), new { id = toDoListNode.ToDoListId, source = source});
         }
     }
