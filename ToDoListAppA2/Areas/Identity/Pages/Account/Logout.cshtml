@@ -4,18 +4,22 @@
     ViewData["Title"] = "Log out";
 }
 
-<header>
-    <h1>@ViewData["Title"]</h1>
-    @{
-        if (User.Identity?.IsAuthenticated ?? false)
+<div class="d-flex justify-content-center align-items-center" style="margin-top:125px;">
+    <div class="card p-4 shadow-lg text-center">
+        @if (User.Identity?.IsAuthenticated ?? false)
         {
-            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
-                <button type="submit" class="nav-link btn btn-link text-dark">Click here to Logout</button>
+            <h2 class="mb-2">Are you sure you want to sign out of <strong>@User.Identity.Name</strong>?</h2>
+            <h5 class="mb-4 text-muted">Sign out of TaskFlow?</h5>
+
+            <form class="d-flex flex-column gap-3" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                <button type="submit" class="btn btn-danger">Sign Out</button>
+                <a href="/" class="btn btn-secondary">Go Back Home</a>
             </form>
         }
         else
         {
-            <p>You have successfully logged out of the application.</p>
+            <p class="text-success">You have been successfully logged out of TaskFlow</p>
+            <a href="/" class="btn btn-secondary mt-3">Go Back Home</a>
         }
-    }
-</header>
+    </div>
+</div>
