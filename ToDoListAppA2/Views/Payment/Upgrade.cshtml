@@ -2,11 +2,20 @@
     ViewData["Title"] = "Upgrade to Premium";
 }
 
-<h2>Upgrade to Premium</h2>
+<div class="d-flex justify-content-center align-items-center" style="margin-top:125px;">
+    <div class="card p-4 shadow-lg text-center">
+        <h2 class="mb-2">Upgrade to <strong>Premium</strong></h2>
+        <h5 class="mb-4 text-muted">Unlock all features of TaskFlow including:</h5>
 
-<p>Premium members can access additional features like task due dates, status flags, and more!</p>
+        <ul class="list-unstyled text-start mx-auto" style="max-width: 400px;">
+            <li>✔️ Share lists</li>
+            <li>✔️ Export to PDF</li>
+            <li>✔️ Unlimited ToDoLists</li>
+        </ul>
 
-
-<a asp-controller="Cart" asp-action="AddToCart" class="btn btn-success">Add Premium to Cart</a>
-<a asp-controller="Cart" asp-action="ViewCart" class="btn btn-primary">View Cart</a>
-
+        <div class="d-flex flex-column gap-3 mt-3">
+            <a asp-controller="Cart" asp-action="AddToCart" class="btn btn-success">Add Premium to Cart</a>
+            <a asp-controller="Cart" asp-action="ViewCart" class="btn btn-secondary">View Cart</a>
+        </div>
+    </div>
+</div>
