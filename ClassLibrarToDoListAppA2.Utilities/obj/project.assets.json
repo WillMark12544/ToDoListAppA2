@@ -8,24 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\alexk\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\GGPC\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\alexk\\Source\\Repos\\ToDoListAppA2\\ClassLibrarToDoListAppA2.Utilities\\ToDoListAppA2.Utility.csproj",
+      "projectUniqueName": "C:\\Users\\GGPC\\source\\repos\\ToDoListAppA2\\ClassLibrarToDoListAppA2.Utilities\\ToDoListAppA2.Utility.csproj",
       "projectName": "ToDoListAppA2.Utility",
-      "projectPath": "C:\\Users\\alexk\\Source\\Repos\\ToDoListAppA2\\ClassLibrarToDoListAppA2.Utilities\\ToDoListAppA2.Utility.csproj",
-      "packagesPath": "C:\\Users\\alexk\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\alexk\\Source\\Repos\\ToDoListAppA2\\ClassLibrarToDoListAppA2.Utilities\\obj\\",
+      "projectPath": "C:\\Users\\GGPC\\source\\repos\\ToDoListAppA2\\ClassLibrarToDoListAppA2.Utilities\\ToDoListAppA2.Utility.csproj",
+      "packagesPath": "C:\\Users\\GGPC\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\GGPC\\source\\repos\\ToDoListAppA2\\ClassLibrarToDoListAppA2.Utilities\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\alexk\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\GGPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -33,6 +28,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -50,8 +46,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.300"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -72,7 +67,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

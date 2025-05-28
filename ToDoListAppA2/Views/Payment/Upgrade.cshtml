@@ -6,6 +6,7 @@
 
 <p>Premium members can access additional features like task due dates, status flags, and more!</p>
 
-<form method="post" asp-action="CreateCheckoutSession">
-    <button class="btn btn-success">Pay $9.99</button>
-</form>
+
+<a asp-controller="Cart" asp-action="AddToCart" class="btn btn-success">Add Premium to Cart</a>
+<a asp-controller="Cart" asp-action="ViewCart" class="btn btn-primary">View Cart</a>
+

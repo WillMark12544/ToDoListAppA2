@@ -1,0 +1,70 @@
+﻿@{
+    ViewData["Title"] = "Shopping Cart";
+    var cartItem = Context.Session.GetString("CartItem");
+}
+
+@if (string.IsNullOrEmpty(cartItem))
+{
+    <div class="row mt-4">
+        <div class="col-md-6 offset-md-3">
+            <div class="alert alert-warning text-center">
+                Your cart is empty.
+            </div>
+            <div class="text-center mt-3">
+                <a asp-action="Upgrade" asp-controller="Payment" class="btn btn-outline-secondary">
+                    ← Back to Upgrade
+                </a>
+
+
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="container mt-5">
+        <div class="card shadow rounded">
+            <div class="card-header bg-dark text-white">
+                <h4 class="mb-0">Shopping Cart</h4>
+            </div>
+            <div class="card-body row">
+                <!-- Left section -->
+                <div class="col-md-6 border-end">
+                    <h5 class="text-primary mb-4">You're upgrading to Premium!</h5>
+                    <p class="mb-3">This upgrade gives you access to:</p>
+                    <ul class="list-unstyled">
+                        <li>✔️ Unlimited ToDoLists</li>
+                        <li>✔️ Share lists with more users</li>
+                        <li>✔️ Priority support</li>
+                    </ul>
+                    <a asp-action="Index" asp-controller="Home" class="btn btn-outline-secondary mt-4">
+                        ← Back to Home
+                    </a>
+                </div>
+
+                <!-- Right section: Order summary -->
+                <div class="col-md-6">
+                    <h5 class="text-primary mb-4">Order Summary</h5>
+                    <div class="border p-3 rounded mb-3 bg-light">
+                        <div class="d-flex justify-content-between">
+                            <span><strong>Premium Upgrade</strong></span>
+                            <span>$9.99</span>
+                        </div>
+                        <div class="text-end mt-2">
+                            <span class="text-muted">Total (NZD):</span>
+                            <h5 class="text-success">$9.99</h5>
+                        </div>
+                    </div>
+                    <form method="post" asp-controller="Payment" asp-action="CreateCheckoutSession">
+                        <button class="btn btn-success w-100">Proceed To Payment</button>
+                    </form>
+                    <form asp-action="RemoveFromCart" method="post" class="mt-2">
+                        <button type="submit" class="btn btn-outline-danger w-100">
+                            Remove Item from Cart
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+}
