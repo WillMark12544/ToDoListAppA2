@@ -166,4 +166,18 @@ body {
     min-height: 100vh;
 }
 
+body[data-bs-theme="dark"] input.form-control,
+body[data-bs-theme="dark"] textarea.form-control,
+body[data-bs-theme="dark"] select.form-control {
+    background-color: #2c2f33 !important;
+    color: #ddd !important;
+    border-color: #444 !important;
+}
+
+    body[data-bs-theme="dark"] input.form-control::placeholder,
+    body[data-bs-theme="dark"] textarea.form-control::placeholder {
+        color: #999 !important;
+    }
+
+
 

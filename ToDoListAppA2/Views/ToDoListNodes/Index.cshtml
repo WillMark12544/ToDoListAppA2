@@ -27,7 +27,7 @@
             {
                 @foreach (var share in Model.SharedWith)
                 {
-                    <p>@share.SharedWithUser.Email</p>
+                    <p>@share.SharedWithUser?.Email</p>
                 }
             }
             else
