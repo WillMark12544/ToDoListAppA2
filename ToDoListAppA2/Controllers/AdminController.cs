@@ -65,10 +65,17 @@ namespace ToDoListAppA2.Controllers
                 return RedirectToAction("Index");
             }
 
+            // Prevent current user from changing their own role
+            if (user.Id == _userManager.GetUserId(User))
+            {
+                TempData["ErrorMessage"] = "You cannot change your own role.";
+                return RedirectToAction("Index");
+            }
+
             var currentRoles = await _userManager.GetRolesAsync(user);
             var existingRole = currentRoles.FirstOrDefault();
 
-            // If the role is the same, do nothing and skip toast
+            // Skip if role is the same
             if (existingRole == role)
             {
                 TempData["InfoMessage"] = "No changes were made. User is already in the selected role.";
@@ -96,6 +103,7 @@ namespace ToDoListAppA2.Controllers
             TempData["SuccessMessage"] = "User's role changed successfully.";
             return RedirectToAction("Index");
         }
+
 
         [HttpPost]
         public async Task<IActionResult> DeleteUser(string userId)

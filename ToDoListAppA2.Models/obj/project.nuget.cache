@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "z4nLL4Lywz0=",
   "success": true,
   "projectFilePath": "C:\\Users\\alexk\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.Models\\ToDoListAppA2.Models.csproj",
+=======
+  "dgSpecHash": "N4ALSrDZyNQ=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.Models\\ToDoListAppA2.Models.csproj",
+>>>>>>> 44352f978989919311e450ca791fa59ce5ceb83c
   "expectedPackageFiles": [
     "C:\\Users\\alexk\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\8.0.15\\microsoft.aspnetcore.cryptography.internal.8.0.15.nupkg.sha512",
     "C:\\Users\\alexk\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\8.0.15\\microsoft.aspnetcore.cryptography.keyderivation.8.0.15.nupkg.sha512",

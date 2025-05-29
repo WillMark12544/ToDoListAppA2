@@ -2,7 +2,11 @@
     ViewData["Title"] = "Payment Canceled";
 }
 
-<h2>⚠ Payment Canceled</h2>
-<p>No changes were made to your account.</p>
+<div class="d-flex justify-content-center align-items-center" style="margin-top:125px;">
+    <div class="card p-4 shadow-lg text-center">
+        <h2 class="text-warning mb-3">⚠ Payment Canceled</h2>
+        <p class="fs-5">No changes were made to your account.</p>
 
-<a asp-controller="Payment" asp-action="Upgrade" class="btn btn-warning mt-3">Try Again</a>
+        <a asp-controller="Payment" asp-action="Upgrade" class="btn btn-outline-warning mt-3">Try Again</a>
+    </div>
+</div>
