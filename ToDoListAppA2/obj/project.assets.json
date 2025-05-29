@@ -11786,19 +11786,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\alexk\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2\\ToDoListAppA2.csproj",
       "projectName": "ToDoListAppA2",
       "projectPath": "C:\\Users\\alexk\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2\\ToDoListAppA2.csproj",
       "packagesPath": "C:\\Users\\alexk\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\alexk\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2\\obj\\",
-=======
-      "projectUniqueName": "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2\\ToDoListAppA2.csproj",
-      "projectName": "ToDoListAppA2",
-      "projectPath": "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2\\ToDoListAppA2.csproj",
-      "packagesPath": "C:\\Users\\GGPC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\GGPC\\source\\repos\\ToDoListAppA2\\ToDoListAppA2\\obj\\",
->>>>>>> 44352f978989919311e450ca791fa59ce5ceb83c
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -11819,19 +11811,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-<<<<<<< HEAD
             "C:\\Users\\alexk\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.DataAccess\\ToDoListAppA2.DataAccess.csproj": {
               "projectPath": "C:\\Users\\alexk\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.DataAccess\\ToDoListAppA2.DataAccess.csproj"
             },
             "C:\\Users\\alexk\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.Models\\ToDoListAppA2.Models.csproj": {
               "projectPath": "C:\\Users\\alexk\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.Models\\ToDoListAppA2.Models.csproj"
-=======
-            "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.DataAccess\\ToDoListAppA2.DataAccess.csproj": {
-              "projectPath": "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.DataAccess\\ToDoListAppA2.DataAccess.csproj"
-            },
-            "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.Models\\ToDoListAppA2.Models.csproj": {
-              "projectPath": "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.Models\\ToDoListAppA2.Models.csproj"
->>>>>>> 44352f978989919311e450ca791fa59ce5ceb83c
             }
           }
         }
@@ -11917,5 +11901,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\alexk\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0."
+    }
+  ]
 }

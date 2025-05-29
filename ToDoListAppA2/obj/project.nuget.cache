@@ -1,14 +1,8 @@
 {
   "version": 2,
-<<<<<<< HEAD
   "dgSpecHash": "r8tNCPPuhsc=",
   "success": true,
   "projectFilePath": "C:\\Users\\alexk\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2\\ToDoListAppA2.csproj",
-=======
-  "dgSpecHash": "p3FcZlVzBuc=",
-  "success": true,
-  "projectFilePath": "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2\\ToDoListAppA2.csproj",
->>>>>>> 44352f978989919311e450ca791fa59ce5ceb83c
   "expectedPackageFiles": [
     "C:\\Users\\alexk\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\alexk\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
@@ -242,5 +236,15 @@
     "C:\\Users\\alexk\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\alexk\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "message": "Problem reading the cache file C:\\Users\\alexk\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0.",
+      "projectPath": "C:\\Users\\alexk\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2\\ToDoListAppA2.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\alexk\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2\\ToDoListAppA2.csproj",
+      "targetGraphs": []
+    }
+  ]
 }

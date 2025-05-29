@@ -1,7 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "C:\\Users\\alexk\\Source\\Repos\\ToDoListAppA2\\ClassLibrarToDoListAppA2.Utilities\\ToDoListAppA2.Utility.csproj": {}
   },
   "projects": {
@@ -13,19 +12,6 @@
         "projectPath": "C:\\Users\\alexk\\Source\\Repos\\ToDoListAppA2\\ClassLibrarToDoListAppA2.Utilities\\ToDoListAppA2.Utility.csproj",
         "packagesPath": "C:\\Users\\alexk\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\alexk\\Source\\Repos\\ToDoListAppA2\\ClassLibrarToDoListAppA2.Utilities\\obj\\",
-=======
-    "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ClassLibrarToDoListAppA2.Utilities\\ToDoListAppA2.Utility.csproj": {}
-  },
-  "projects": {
-    "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ClassLibrarToDoListAppA2.Utilities\\ToDoListAppA2.Utility.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ClassLibrarToDoListAppA2.Utilities\\ToDoListAppA2.Utility.csproj",
-        "projectName": "ToDoListAppA2.Utility",
-        "projectPath": "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ClassLibrarToDoListAppA2.Utilities\\ToDoListAppA2.Utility.csproj",
-        "packagesPath": "C:\\Users\\GGPC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\GGPC\\source\\repos\\ToDoListAppA2\\ClassLibrarToDoListAppA2.Utilities\\obj\\",
->>>>>>> 44352f978989919311e450ca791fa59ce5ceb83c
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

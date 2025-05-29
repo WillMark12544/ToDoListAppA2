@@ -1,14 +1,8 @@
 {
   "version": 2,
-<<<<<<< HEAD
   "dgSpecHash": "sG1AyttVFOE=",
   "success": true,
   "projectFilePath": "C:\\Users\\alexk\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.DataAccess\\ToDoListAppA2.DataAccess.csproj",
-=======
-  "dgSpecHash": "R6otq4bJ+g8=",
-  "success": true,
-  "projectFilePath": "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.DataAccess\\ToDoListAppA2.DataAccess.csproj",
->>>>>>> 44352f978989919311e450ca791fa59ce5ceb83c
   "expectedPackageFiles": [
     "C:\\Users\\alexk\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\alexk\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
@@ -102,5 +96,15 @@
     "C:\\Users\\alexk\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\alexk\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "message": "Problem reading the cache file C:\\Users\\alexk\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.DataAccess\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0.",
+      "projectPath": "C:\\Users\\alexk\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.DataAccess\\ToDoListAppA2.DataAccess.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\alexk\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.DataAccess\\ToDoListAppA2.DataAccess.csproj",
+      "targetGraphs": []
+    }
+  ]
 }

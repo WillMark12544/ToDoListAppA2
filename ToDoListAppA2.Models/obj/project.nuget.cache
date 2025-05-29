@@ -1,14 +1,8 @@
 {
   "version": 2,
-<<<<<<< HEAD
   "dgSpecHash": "z4nLL4Lywz0=",
   "success": true,
   "projectFilePath": "C:\\Users\\alexk\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.Models\\ToDoListAppA2.Models.csproj",
-=======
-  "dgSpecHash": "N4ALSrDZyNQ=",
-  "success": true,
-  "projectFilePath": "C:\\Users\\GGPC\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.Models\\ToDoListAppA2.Models.csproj",
->>>>>>> 44352f978989919311e450ca791fa59ce5ceb83c
   "expectedPackageFiles": [
     "C:\\Users\\alexk\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\8.0.15\\microsoft.aspnetcore.cryptography.internal.8.0.15.nupkg.sha512",
     "C:\\Users\\alexk\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\8.0.15\\microsoft.aspnetcore.cryptography.keyderivation.8.0.15.nupkg.sha512",
@@ -29,5 +23,15 @@
     "C:\\Users\\alexk\\.nuget\\packages\\microsoft.extensions.options\\8.0.2\\microsoft.extensions.options.8.0.2.nupkg.sha512",
     "C:\\Users\\alexk\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "message": "Problem reading the cache file C:\\Users\\alexk\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.Models\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0.",
+      "projectPath": "C:\\Users\\alexk\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.Models\\ToDoListAppA2.Models.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\alexk\\Source\\Repos\\ToDoListAppA2\\ToDoListAppA2.Models\\ToDoListAppA2.Models.csproj",
+      "targetGraphs": []
+    }
+  ]
 }
