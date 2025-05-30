@@ -12,6 +12,7 @@ namespace ToDoListAppA2.Models
         public string Title { get; set; }
 
         public string Description { get; set; }
+        public bool Archived { get; set; } = false;
 
         // Initialize collections, can be empty
         public ICollection<ToDoListNode> ToDoListNodes { get; set; } = new List<ToDoListNode>();

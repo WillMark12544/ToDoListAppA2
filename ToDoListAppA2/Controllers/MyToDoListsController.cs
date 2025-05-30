@@ -22,6 +22,7 @@ using System.Security.AccessControl;
 using ToDoListAppA2.DataAccess.Repository.IRepository;
 using ToDoListAppA2.DataAccess.Repository;
 using SQLitePCL;
+using ToDoListAppA2.Views.ViewModels;
 
 
 namespace ToDoListAppA2.Controllers
@@ -47,7 +48,7 @@ namespace ToDoListAppA2.Controllers
 
             // Get the current users To-Do Lists
             var currentUserId = _userManager.GetUserId(User);
-            var toDoLists = await _unitOfWork.myToDoLists.GetUserToDoListsAsync(currentUserId);
+            var toDoLists = await _unitOfWork.myToDoLists.GetAllUserToDoListsAsync(currentUserId);
 
             byte[] pdfBytes;
 
@@ -70,6 +71,10 @@ namespace ToDoListAppA2.Controllers
                     doc.Add(new Paragraph()
                         .Add(new Text("Description: ").SetFont(boldFont))
                         .Add(new Text(list.Description).SetFont(regularFont)));
+                    
+                    doc.Add(new Paragraph()
+                        .Add(new Text("Archived: ").SetFont(boldFont))
+                        .Add(new Text(list.Archived.ToString()).SetFont(regularFont)));
 
                     // Shared users
                     if (list.SharedWith?.Any() == true)
@@ -133,9 +138,17 @@ namespace ToDoListAppA2.Controllers
         public async Task<IActionResult> Index()
         {
             var currentUserId = _userManager.GetUserId(User);
-            var toDoLists = await _unitOfWork.myToDoLists.GetUserToDoListsAsync(currentUserId);
 
-            return View(toDoLists);
+            var unarchivedLists = await _unitOfWork.myToDoLists.GetUnarchivedUserToDoListsAsync(currentUserId);
+            var archivedLists = await _unitOfWork.myToDoLists.GetArchivedUserToDoListsAsync(currentUserId);
+
+            var viewModel = new ToDoListIndexViewModel
+            {
+                UnarchivedLists = unarchivedLists,
+                ArchivedLists = archivedLists
+            };
+
+            return View(viewModel);
         }
 
         // GET: ToDoLists/Create
@@ -291,5 +304,76 @@ namespace ToDoListAppA2.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        // GET: ToDoLists/Archive
+        public async Task<IActionResult> Archive(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var toDoList = await _unitOfWork.myToDoLists.GetByIdAsync(id.Value);
+
+            if (toDoList == null)
+            {
+                return NotFound();
+            }
+
+            return View(toDoList);
+        }
+
+        // POST: ToDoLists/Archive
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ArchiveConfirmed(int id)
+        {
+            var toDoList = await _unitOfWork.myToDoLists.GetByIdAsync(id);
+
+            if (toDoList != null)
+            {
+                toDoList.Archived = true;
+                await _unitOfWork.SaveAsync();
+                TempData["SuccessMessage"] = "To-Do List successfully archived!";
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        // GET: ToDoLists/Unarchive
+        public async Task<IActionResult> Unarchive(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var toDoList = await _unitOfWork.myToDoLists.GetByIdAsync(id.Value);
+
+            if (toDoList == null)
+            {
+                return NotFound();
+            }
+
+            return View(toDoList);
+        }
+
+        // POST: ToDoLists/Archive
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UnarchiveConfirmed(int id)
+        {
+            var toDoList = await _unitOfWork.myToDoLists.GetByIdAsync(id);
+
+            if (toDoList != null)
+            {
+                toDoList.Archived = false;
+                await _unitOfWork.SaveAsync();
+                TempData["SuccessMessage"] = "To-Do List successfully unarchived!";
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }

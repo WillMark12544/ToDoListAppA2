@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using ToDoListAppA2.Data;
 using ToDoListAppA2.DataAccess.Repository.IRepository;
 using ToDoListAppA2.Models;
+using ToDoListAppA2.Views.ViewModels;
 
 namespace ToDoListAppA2.Controllers
 {
@@ -26,10 +27,18 @@ namespace ToDoListAppA2.Controllers
         // GET: ToDoListsShares
         public async Task<IActionResult> Index()
         {
-            var userId = _userManager.GetUserId(User);
-            var sharedToDoLists = await _unitOfWork.sharedToDoLists.GetSharedToDoListsForUserAsync(userId);
+            var currentUserId = _userManager.GetUserId(User);
+            
+            var unarchivedSharedLists = await _unitOfWork.sharedToDoLists.GetUnarchivedSharedToDoListsForUserAsync(currentUserId);
+            var archivedSharedLists = await _unitOfWork.sharedToDoLists.GetArchivedSharedToDoListsForUserAsync(currentUserId);
 
-            return View(sharedToDoLists);
+            var viewModel = new ToDoListShareIndexViewModel
+            {
+                UnarchivedSharedLists = unarchivedSharedLists,
+                ArchivedSharedLists = archivedSharedLists
+            };
+
+            return View(viewModel);
         }
 
         // GET: ToDoListShares/Leave

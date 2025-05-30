@@ -1,10 +1,10 @@
-﻿@model IEnumerable<ToDoListAppA2.Models.ToDoList>
+﻿@model ToDoListAppA2.Views.ViewModels.ToDoListIndexViewModel
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>My To-Do Lists</h1>
+<h1 class="mt-3">My To-Do Lists</h1>
 
 <div class="mb-2">
     <div class="d-flex justify-content-end gap-2">
@@ -34,10 +34,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                Id
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Title)
+                Title
             </th>
             <th>
                 Shared With
@@ -46,7 +46,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model) {
+        @foreach (var item in Model.UnarchivedLists) {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Id)
@@ -93,10 +93,66 @@
                         <a asp-controller="SharedToDoLists" asp-action="Share" asp-route-id="@item.Id" class="btn btn-outline-secondary btn-sm">Share</a>
                         <a asp-controller="SharedToDoLists" asp-action="Unshare" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Unshare</a>
                     }
+                    <a asp-action="Archive" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Archive</a>
                     <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
                 </td>
             </tr>
 }
+    </tbody>
+</table>
+<h1 class="mt-5">Archived To-Do Lists</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Title
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ArchivedLists)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    <a asp-controller="ToDoListNodes" asp-action="Index" asp-route-source="MyToDoLists" asp-route-id="@item.Id" class="btn btn-outline-secondary btn-sm">Open</a>
+                    @if (User.IsInRole("Normal"))
+                    {
+                        <span data-bs-toggle="tooltip" title="Upgrade to premium to use">
+                            <button class="btn btn-outline-secondary btn-sm" disabled>
+                                Share
+                            </button>
+                        </span>
+                        <span data-bs-toggle="tooltip" title="Upgrade to premium to use">
+                            <button class="btn btn-warning btn-sm" disabled>
+                                Unshare
+                            </button>
+                        </span>
+                        <span data-bs-toggle="tooltip" title="Upgrade to premium to use">
+                            <button class="btn btn-success btn-sm" disabled>
+                                Unarchive
+                            </button>
+                        </span>
+                    }
+                    else
+                    {
+                        <a asp-controller="SharedToDoLists" asp-action="Share" asp-route-id="@item.Id" class="btn btn-outline-secondary btn-sm">Share</a>
+                        <a asp-controller="SharedToDoLists" asp-action="Unshare" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Unshare</a>
+                        <a asp-controller="MyToDoLists" asp-action="Unarchive" asp-route-id="@item.Id" class="btn btn-success btn-sm">Unarchive</a>
+                    }
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 @section Scripts {

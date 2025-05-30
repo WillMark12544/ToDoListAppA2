@@ -1,18 +1,18 @@
-﻿@model IEnumerable<ToDoListAppA2.Models.ToDoList>
+﻿@model ToDoListAppA2.Views.ViewModels.ToDoListShareIndexViewModel
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Shared To-Do Lists</h1>
+<h1 class="mt-3">Shared To-Do Lists</h1>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                Id
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Title)
+                Title
             </th>
             <th>
                 Shared With
@@ -21,7 +21,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.UnarchivedSharedLists)
         {
             <tr>
                 <td>
@@ -54,6 +54,38 @@
                     -->
                     <a asp-controller="ToDoListNodes" asp-action="Index" asp-route-id="@item.Id" asp-route-source="SharedToDoLists" class="btn btn-outline-secondary btn-sm">Open</a>
                     <a asp-controller="MyToDoLists" asp-action="Edit" asp-route-id="@item.Id" asp-route-source="SharedToDoLists" class="btn btn-outline-secondary btn-sm">Edit</a>
+                    <a asp-action="Leave" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Leave</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h1 class="mt-5">Archived To-Do Lists</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Title
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ArchivedSharedLists)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    <a asp-controller="ToDoListNodes" asp-action="Index" asp-route-id="@item.Id" asp-route-source="SharedToDoLists" class="btn btn-outline-secondary btn-sm">Open</a>
                     <a asp-action="Leave" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Leave</a>
                 </td>
             </tr>

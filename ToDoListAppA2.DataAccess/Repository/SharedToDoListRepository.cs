@@ -31,6 +31,28 @@ namespace ToDoListAppA2.DataAccess.Repository
                 .ToListAsync();
         }
 
+        public async Task<List<ToDoList?>> GetUnarchivedSharedToDoListsForUserAsync(string userId)
+        {
+            return await _context.ToDoListShares
+                .Where(ts => ts.SharedWithUserId == userId && !ts.ToDoList.Archived)
+                .Include(ts => ts.ToDoList)
+                .ThenInclude(t => t.SharedWith)
+                .ThenInclude(t => t.SharedWithUser)
+                .Select(ts => ts.ToDoList)
+                .ToListAsync();
+        }
+
+        public async Task<List<ToDoList?>> GetArchivedSharedToDoListsForUserAsync(string userId)
+        {
+            return await _context.ToDoListShares
+                .Where(ts => ts.SharedWithUserId == userId && ts.ToDoList.Archived)
+                .Include(ts => ts.ToDoList)
+                .ThenInclude(t => t.SharedWith)
+                .ThenInclude(t => t.SharedWithUser)
+                .Select(ts => ts.ToDoList)
+                .ToListAsync();
+        }
+
         public async Task<ToDoListShare?> GetShareEntriesForToDoListAsync(int toDoListId, string userId)
         {
             return await _context.ToDoListShares

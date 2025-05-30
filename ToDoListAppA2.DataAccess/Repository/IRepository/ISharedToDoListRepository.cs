@@ -10,6 +10,8 @@ namespace ToDoListAppA2.DataAccess.Repository.IRepository
     public interface ISharedToDoListRepository : IRepository<ToDoListShare>
     {
         Task<List<ToDoList?>> GetSharedToDoListsForUserAsync(string userId);
+        Task<List<ToDoList?>> GetArchivedSharedToDoListsForUserAsync(string userId);
+        Task<List<ToDoList?>> GetUnarchivedSharedToDoListsForUserAsync(string userId);
         Task<ToDoListShare?> GetShareEntriesForToDoListAsync(int toDoListId, string userId);
     }
 }

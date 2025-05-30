@@ -208,6 +208,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/alexk/Source/Repos/ToDoListAppA2/ToDoListAppA2/Views/MyToDoLists/Archive.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlUb0RvTGlzdHNcQXJjaGl2ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/alexk/Source/Repos/ToDoListAppA2/ToDoListAppA2/Views/MyToDoLists/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlUb0RvTGlzdHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -222,6 +226,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/alexk/Source/Repos/ToDoListAppA2/ToDoListAppA2/Views/MyToDoLists/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlUb0RvTGlzdHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alexk/Source/Repos/ToDoListAppA2/ToDoListAppA2/Views/MyToDoLists/Unarchive.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlUb0RvTGlzdHNcVW5hcmNoaXZlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/alexk/Source/Repos/ToDoListAppA2/ToDoListAppA2/Views/Payment/PaymentCancel.cshtml]

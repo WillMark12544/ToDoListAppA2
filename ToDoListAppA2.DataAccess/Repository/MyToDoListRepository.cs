@@ -26,7 +26,29 @@ namespace ToDoListAppA2.DataAccess.Repository
                 .CountAsync(t => t.UserId == userId);
         }
 
-        public async Task<List<ToDoList>> GetUserToDoListsAsync(string userId)
+        public async Task<List<ToDoList>> GetUnarchivedUserToDoListsAsync(string userId)
+        {
+            return await _context.ToDoLists
+                .Where(t => t.UserId == userId && !t.Archived)
+                .Include(t => t.User)
+                .Include(t => t.SharedWith)
+                .ThenInclude(ts => ts.SharedWithUser)
+                .Include(t => t.ToDoListNodes)
+                .ToListAsync();
+        }
+
+        public async Task<List<ToDoList>> GetArchivedUserToDoListsAsync(string userId)
+        {
+            return await _context.ToDoLists
+                .Where(t => t.UserId == userId && t.Archived)
+                .Include(t => t.User)
+                .Include(t => t.SharedWith)
+                .ThenInclude(ts => ts.SharedWithUser)
+                .Include(t => t.ToDoListNodes)
+                .ToListAsync();
+        }
+
+        public async Task<List<ToDoList>> GetAllUserToDoListsAsync(string userId)
         {
             return await _context.ToDoLists
                 .Where(t => t.UserId == userId)
