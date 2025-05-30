@@ -23,6 +23,7 @@ namespace ToDoListAppA2.DataAccess.Repository
         public async Task<int> CountUserToDoListsAsync(string userId)
         {
             return await _context.ToDoLists
+                .Where(t => !t.Archived)
                 .CountAsync(t => t.UserId == userId);
         }
 
