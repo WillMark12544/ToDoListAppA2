@@ -1,18 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "w07OgDwU1f8=",
+  "dgSpecHash": "EziIELiYCwM=",
   "success": true,
-  "projectFilePath": "C:\\Users\\alexk\\Source\\Repos\\ToDoListAppA2\\ClassLibrarToDoListAppA2.Utilities\\ToDoListAppA2.Utility.csproj",
+  "projectFilePath": "C:\\Users\\GGPC\\source\\repos\\ToDoListAppA2\\ClassLibrarToDoListAppA2.Utilities\\ToDoListAppA2.Utility.csproj",
   "expectedPackageFiles": [],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "message": "Problem reading the cache file C:\\Users\\alexk\\Source\\Repos\\ToDoListAppA2\\ClassLibrarToDoListAppA2.Utilities\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0.",
-      "projectPath": "C:\\Users\\alexk\\Source\\Repos\\ToDoListAppA2\\ClassLibrarToDoListAppA2.Utilities\\ToDoListAppA2.Utility.csproj",
-      "warningLevel": 1,
-      "filePath": "C:\\Users\\alexk\\Source\\Repos\\ToDoListAppA2\\ClassLibrarToDoListAppA2.Utilities\\ToDoListAppA2.Utility.csproj",
-      "targetGraphs": []
-    }
-  ]
+  "logs": []
 }

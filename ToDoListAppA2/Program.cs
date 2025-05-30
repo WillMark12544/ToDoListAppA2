@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ToDoListAppA2.Data;
 using ToDoListAppA2.Models;
@@ -81,13 +81,14 @@ using (var scope = app.Services.CreateScope()) //Ensures Roles Exist
     }
 }
 
-using (var scope = app.Services.CreateScope()) //Creates Test Admin - Needs to Change at some point
+using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
 
-    string adminEmail = "test1.test@gmail.com"; // Replace with the actual user's email
+    string adminEmail = "test1.test@gmail.com";
+    string adminPassword = "Admin123!"; 
     string roleName = "Admin";
 
     // Create the role if it doesn't exist
@@ -96,26 +97,39 @@ using (var scope = app.Services.CreateScope()) //Creates Test Admin - Needs to C
         await roleManager.CreateAsync(new IdentityRole(roleName));
     }
 
-    // Find the user
+    // Create the user if they don't exist
     var user = await userManager.FindByEmailAsync(adminEmail);
-    if (user != null)
+    if (user == null)
     {
-        // Ensure the user is in the Admin role
-        if (!(await userManager.IsInRoleAsync(user, roleName)))
+        user = new ApplicationUser
         {
-            await userManager.AddToRoleAsync(user, roleName);
-            Console.WriteLine($"User {adminEmail} added to Admin role.");
-        }
-        else
+            UserName = adminEmail,
+            Email = adminEmail,
+            EmailConfirmed = true
+        };
+
+        var result = await userManager.CreateAsync(user, adminPassword);
+        if (!result.Succeeded)
         {
-            Console.WriteLine($"User {adminEmail} is already in the Admin role.");
+            Console.WriteLine($"Failed to create admin user: {string.Join(", ", result.Errors.Select(e => e.Description))}");
+            return;
         }
+
+        Console.WriteLine($"Admin user {adminEmail} created.");
+    }
+
+    // 3. Add to Admin role
+    if (!await userManager.IsInRoleAsync(user, roleName))
+    {
+        await userManager.AddToRoleAsync(user, roleName);
+        Console.WriteLine($"Admin user {adminEmail} added to Admin role.");
     }
     else
     {
-        Console.WriteLine($"User {adminEmail} not found.");
+        Console.WriteLine($"Admin user {adminEmail} is already in the Admin role.");
     }
 }
+
 
 
 app.Run();
